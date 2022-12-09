@@ -47,15 +47,17 @@ fun log(base: CNumber, of: CNumber): CNumber{
 	return ln(of) / ln(base)
 }
 
+@Suppress("unused")
 fun log(base: Number, of: CNumber): CNumber{
 	return log(base.toComplex(), of)
 }
 
-// exponential
+// exponential functions
 fun exp(of: CNumber): CNumber{
 	return exp(of.re()) * CNumber(cos(of.im()).roundToLong(), sin(of.im()).roundToLong())
 }
 
+@Suppress("unused")
 fun CNumber.pow(to: CNumber): CNumber{
 	return exp(to * ln(this))
 }
@@ -64,6 +66,53 @@ fun CNumber.pow(to: Number): CNumber{
 	return exp(to * ln(this))
 }
 
+@Suppress("unused")
 fun Number.pow(to: CNumber): CNumber{
 	return exp(ln(this.toDouble()) * to)
+}
+
+@Suppress("unused")
+fun sqrt(of: CNumber): CNumber{
+	return of.pow(1/2)
+}
+
+@Suppress("unused")
+fun cbrt(of: CNumber): CNumber{
+	return of.pow(1/3)
+}
+
+@Suppress("unused")
+fun nthrt(of: CNumber, n: Number): CNumber{
+return of.pow(1/n.toDouble())
+}
+
+// trigonometric functions
+@Suppress("unused")
+fun sin(of: CNumber): CNumber{
+	return (1/2) * (exp(Library.i * of) - exp( -1 * Library.i * of))
+}
+
+@Suppress("unused")
+fun cos(of: CNumber): CNumber{
+	return (1/2) * (exp(Library.i * of) + exp( -1 * Library.i * of))
+}
+
+@Suppress("unused")
+fun tan(of: CNumber): CNumber{
+	return sin(of) / cos(of)
+}
+
+@Suppress("unused")
+fun cot(of: CNumber): CNumber{
+	return cos(of) / sin(of)
+}
+
+@Suppress("unused")
+fun sec(of: CNumber): CNumber{
+	return 1 / cos(of)
+}
+
+@Suppress("unused")
+fun csc(of : CNumber): CNumber{
+	return 1 / sin(of)
 }
