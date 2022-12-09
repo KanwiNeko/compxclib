@@ -68,6 +68,10 @@ data class CNumber(private val real: Number,private val imaginary: Number){
         return this / b.toComplex()
     }
 
+    operator fun unaryMinus(): CNumber{
+        return CNumber(-1 *  re, -1 * im)
+    }
+
     override fun toString(): String {
         return if (floor(re) == ceil(re) && floor(im) == ceil(im)) {
             re.roundToInt().toString() + " + " + im.roundToInt().toString() + "i"

@@ -44,7 +44,7 @@ dependencies {
 
 // Output to build/libs/shadow.jar
 shadowJar {
-    archiveBaseName.set('shadow')
+    archiveBaseName.set('compxclib')
     archiveClassifier.set('')
     archiveVersion.set('')
 }
