@@ -37,3 +37,33 @@ fun Number.toComplex(): CNumber {
 	val num = this.toDouble()
 	return CNumber(num, 0)
 }
+
+// complex logarithms
+fun ln(of: CNumber): CNumber{
+	return CNumber(ln(of.magnitude), of.argument)
+}
+
+fun log(base: CNumber, of: CNumber): CNumber{
+	return ln(of) / ln(base)
+}
+
+fun log(base: Number, of: CNumber): CNumber{
+	return log(base.toComplex(), of)
+}
+
+// exponential
+fun exp(of: CNumber): CNumber{
+	return exp(of.re()) * CNumber(cos(of.im()).roundToLong(), sin(of.im()).roundToLong())
+}
+
+fun CNumber.pow(to: CNumber): CNumber{
+	return exp(to * ln(this))
+}
+
+fun CNumber.pow(to: Number): CNumber{
+	return exp(to * ln(this))
+}
+
+fun Number.pow(to: CNumber): CNumber{
+	return exp(ln(this.toDouble()) * to)
+}

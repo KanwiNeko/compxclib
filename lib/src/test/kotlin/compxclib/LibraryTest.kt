@@ -26,8 +26,7 @@ class LibraryTest {
     }
     @Test
     fun testSum() {
-        assertEquals(
-            CNumber(5.0, 6.0),
+        assertEquals(CNumber(5.0, 6.0),
             CNumber(1.0, 5.5) + CNumber(4.0, 0.5),
             "The sum should be 5 + 6i"
         )
@@ -95,6 +94,24 @@ class LibraryTest {
             6.0 / CNumber(3.0, 3.0),
             "The quotient should be 1 - i"
 
+        )
+    }
+    @Test
+    fun testToString() {
+        assertEquals(
+            "3 + 4i",
+            (CNumber(2.5, 4) + CNumber(0.5, 0)).toString()
+        )
+    }
+    @Test
+    fun testExp(){
+        assertEquals(
+            -1.0,
+            exp(CNumber(0, PI)).toReal()
+        )
+        assertEquals(
+            -1.0,
+            CNumber(0, 1).pow(2).toReal()
         )
     }
 }

@@ -7,7 +7,7 @@ import kotlin.math.roundToInt
 //Main complex class
 data class CNumber(private val real: Number,private val imaginary: Number){
     private val re = real.toDouble()
-    private val im = real.toDouble()
+    private val im = imaginary.toDouble()
     val magnitude: Double = mag(this)
     val argument: Double = arg(this)
 
@@ -30,8 +30,8 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     // definition of operators
     // between complex numbers
     operator fun plus(b: CNumber): CNumber{
-        return CNumber(this.re + b.re,
-            this.im + b.im)
+        return CNumber(re + b.re,
+            im + b.im)
     }
 
     operator fun minus(b: CNumber): CNumber{
@@ -71,15 +71,15 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     }
 
     override fun toString(): String {
-        return if (floor(re) == ceil(im) && floor(im) == ceil(im)) {
-            re.roundToInt().toString() + " + " + im.toString() + "i"
+        return if (floor(re) == ceil(re) && floor(im) == ceil(im)) {
+            re.roundToInt().toString() + " + " + im.roundToInt().toString() + "i"
         } else
             re.toString() + " + " + im.toString() + "i"
     }
 
     // Re and Im functions
 
-    fun re(): Double{ return re }
-    fun im(): Double{ return im }
+    fun re(): Double { return re }
+    fun im(): Double { return im }
 
 }
