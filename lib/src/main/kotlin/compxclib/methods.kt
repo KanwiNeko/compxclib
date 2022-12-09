@@ -59,3 +59,20 @@ inline fun <reified T : Number> Double.round(): T {
 		this as T
 	}
 }
+
+//extension of methods with the Number class
+operator fun Number.plus(cNumber: CNumber<*>): CNumber<Double> {
+	return CNumber(cNumber.real.toDouble() + this.toDouble(), cNumber.imaginary.toDouble())
+}
+
+operator fun Number.minus(cNumber: CNumber<*>): CNumber<Double> {
+	return CNumber(this.toDouble() - cNumber.real.toDouble(), -1.0 * cNumber.imaginary.toDouble())
+}
+
+operator fun Number.times(cNumber: CNumber<*>): CNumber<Double> {
+	return cNumber * this.toDouble()
+}
+
+operator fun Number.div(cNumber: CNumber<*>): CNumber<Double> {
+	return this.toComplex<Double>() / cNumber
+}

@@ -34,7 +34,12 @@ class LibraryTest {
         assertEquals(
             CNumber(5.0, 6.0),
             CNumber(2.0, 6.0) + 3.0,
-            "The sum of the complex number and the real number should be 5 + 6i"
+            "The sum should be 5 + 6i"
+        )
+        assertEquals(
+            CNumber(7.0, 7.0),
+            3.0 + CNumber(3.0, 7.0),
+            "The sum should be 7 + 7i"
         )
     }
     @Test
@@ -42,12 +47,17 @@ class LibraryTest {
         assertEquals(
             CNumber(5.0, 8.0),
             CNumber(10.0, 15.0) - CNumber(5.0, 7.0),
-            "The subtraction of the numbers should result in 5 + 8i"
+            "The subtraction should be in 5 + 8i"
         )
         assertEquals(
             CNumber(5.0, 8.0),
             CNumber(6.0, 8.0) - 1,
-            "The subtraction of the real number to the complex number should be 5 + 8i"
+            "The subtraction should be 5 + 8i"
+        )
+        assertEquals(
+            CNumber(4.0, 7.0),
+            8.0 - CNumber(4.0, -7.0),
+            "The subtraction should be 4 + 7i"
         )
     }
     @Test
@@ -55,12 +65,17 @@ class LibraryTest {
         assertEquals(
             CNumber(-1.0, 8.0),
             CNumber(3.0,2.0) * CNumber(1.0, 2.0),
-            "The product of the numbers should be -1 + 8i"
+            "The product should be -1 + 8i"
         )
         assertEquals(
             CNumber(6.0, 8.0),
             CNumber(3.0, 4.0) * 2,
-            "The multiplication should be 6 + 8i"
+            "The product should be 6 + 8i"
+        )
+        assertEquals(
+            CNumber(15.0, 10.0),
+            5 * CNumber(3.0, 2.0),
+            "The product should be 15 + 10i"
         )
     }
     @Test
@@ -74,6 +89,12 @@ class LibraryTest {
             CNumber(4.0, 5.0),
             CNumber(8.0, 10.0) / 2.0,
             "The quotient should be 4 + 5i"
+        )
+        assertEquals(
+            CNumber(1.0, -1.0),
+            6.0 / CNumber(3.0, 3.0),
+            "The quotient should be 1 - i"
+
         )
     }
 }
