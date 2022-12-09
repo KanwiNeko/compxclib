@@ -1,31 +1,26 @@
 package compxclib
 
+import kotlin.math.ceil
+import kotlin.math.floor
+import kotlin.math.roundToInt
+
 //Main complex class
-data class CNumber<T: Number>(val real: T, val imaginary: T){
-    val magnitude: Double = this.mag()
-    val argument: Double = this.arg()
-    override fun toString(): String {
-        return real.toString() + " + " + imaginary.toString() + "i"
-    }
+data class CNumber(private val real: Number,private val imaginary: Number){
+    private val re = real.toDouble()
+    private val im = real.toDouble()
+    val magnitude: Double = mag(this)
+    val argument: Double = arg(this)
 
     // main methods of the class
-    private fun mag(): Double {
-        return mag(this)
-    }
-
-    private fun arg(): Double {
-        return arg(this)
-    }
-
     @SuppressWarnings
-    fun conjugate(): CNumber<Double>{
-        return CNumber(this.real.toDouble(), -1 * this.imaginary.toDouble())
+    fun conjugate(): CNumber{
+        return CNumber(re, -1 * im)
     }
 
     @SuppressWarnings
     fun toReal(): Double {
-        if (this.imaginary.toDouble() == 0.0) {
-            return this.real.toDouble()
+        if (this.im == 0.0) {
+            return this.re
         } else {
             println(this.toString())
             throw IllegalConversionArgument("This number has a non zero imaginary part.")
@@ -33,47 +28,58 @@ data class CNumber<T: Number>(val real: T, val imaginary: T){
     }
 
     // definition of operators
-
-    // operators between complex numbers
-    operator fun plus(b: CNumber<*>): CNumber<Double>{
-        return CNumber(this.real.toDouble() + b.real.toDouble(),
-            this.imaginary.toDouble() + b.imaginary.toDouble())
+    // between complex numbers
+    operator fun plus(b: CNumber): CNumber{
+        return CNumber(this.re + b.re,
+            this.im + b.im)
     }
 
-    operator fun minus(b: CNumber<*>): CNumber<Double>{
-        return CNumber(this.real.toDouble() - b.real.toDouble(),
-            this.imaginary.toDouble() - b.imaginary.toDouble())
+    operator fun minus(b: CNumber): CNumber{
+        return CNumber(this.re - b.re,
+            this.im - b.im)
     }
 
-    operator fun times(b: CNumber<*>): CNumber<Double> {
-        return CNumber(this.real.toDouble() * b.real.toDouble() - this.imaginary.toDouble() * b.imaginary.toDouble(),
-            this.real.toDouble() * b.imaginary.toDouble() + this.imaginary.toDouble() * b.real.toDouble() )
+    operator fun times(b: CNumber): CNumber {
+        return CNumber(this.re * b.re - this.im * b.im,
+            this.re * b.im + this.im * b.re )
     }
 
-    operator fun div(b: CNumber<*>): CNumber<Double>{
-        val wwc = 1/((b * b.conjugate()).toReal())
+    operator fun div(b: CNumber): CNumber{
+        val wwc = 1/(b * b.conjugate()).toReal()
         val zwc = this * b.conjugate()
         return zwc * wwc
     }
 
     // operators between a real number and a complex number
-    operator fun plus(b: Number): CNumber<Double>{
-        return CNumber(this.real.toDouble() + b.toDouble(),
-            this.imaginary.toDouble())
+    operator fun plus(b: Number): CNumber{
+        return CNumber(this.re + b.toDouble(),
+            this.im)
     }
 
-    operator fun minus(b: Number): CNumber<Double>{
-        return CNumber(this.real.toDouble() - b.toDouble(),
-            this.imaginary.toDouble())
+    operator fun minus(b: Number): CNumber{
+        return CNumber(this.re - b.toDouble(),
+            this.im)
     }
 
-    operator fun times(b: Number): CNumber<Double>{
-        return CNumber(this.real.toDouble() * b.toDouble(),
-            this.imaginary.toDouble() * b.toDouble())
+    operator fun times(b: Number): CNumber{
+        return CNumber(this.re * b.toDouble(),
+            this.im * b.toDouble())
     }
 
-    operator fun div(b: Number): CNumber<Double>{
-        return this / b.toComplex<Double>()
+    operator fun div(b: Number): CNumber{
+        return this / b.toComplex()
     }
+
+    override fun toString(): String {
+        return if (floor(re) == ceil(im) && floor(im) == ceil(im)) {
+            re.roundToInt().toString() + " + " + im.toString() + "i"
+        } else
+            re.toString() + " + " + im.toString() + "i"
+    }
+
+    // Re and Im functions
+
+    fun re(): Double{ return re }
+    fun im(): Double{ return im }
 
 }

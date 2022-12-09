@@ -38,7 +38,7 @@ class LibraryTest {
         )
         assertEquals(
             CNumber(7.0, 7.0),
-            3.0 + CNumber(3.0, 7.0),
+            3.0 + CNumber(4.0, 7.0),
             "The sum should be 7 + 7i"
         )
     }

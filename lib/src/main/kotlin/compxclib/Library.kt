@@ -4,6 +4,6 @@ package compxclib
 class Library {
     companion object {
         @JvmStatic
-        val i: CNumber<Int> = CNumber(0, 1)
+        val i: CNumber = CNumber(0, 1)
     }
 }
