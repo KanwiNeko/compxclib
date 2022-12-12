@@ -20,7 +20,6 @@ data class CNumber(private val real: Number,private val imaginary: Number){
         if (this.im == 0.0) {
             return this.re
         } else {
-            println(this.toString())
             throw IllegalConversionArgument("This number has a non zero imaginary part.")
         }
     }
@@ -80,7 +79,6 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     }
 
     // Re and Im functions
-
     fun re(): Double { return re }
     fun im(): Double { return im }
 

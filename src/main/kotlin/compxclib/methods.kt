@@ -26,8 +26,8 @@ fun arg(number: CNumber): Double {
 
 @Suppress("unused")
 fun complexFromPolar(theta: Number, modulus: Number): CNumber {
-	val real = modulus.toDouble() * cos(theta.toDouble())
-	val imaginary = modulus.toDouble() * sin(theta.toDouble())
+	val real = (modulus.toDouble() * cos(theta.toDouble())).roundToLong()
+	val imaginary = (modulus.toDouble() * sin(theta.toDouble())).roundToLong()
 	return CNumber(real, imaginary)
 }
 
@@ -89,12 +89,12 @@ return of.pow(1/n.toDouble())
 // trigonometric functions
 @Suppress("unused")
 fun sin(of: CNumber): CNumber{
-	return (1/2) * (exp(Library.i * of) - exp( -1 * Library.i * of))
+	return (1/2) * (exp(i * of) - exp( -i * of))
 }
 
 @Suppress("unused")
 fun cos(of: CNumber): CNumber{
-	return (1/2) * (exp(Library.i * of) + exp( -1 * Library.i * of))
+	return (1/2) * (exp(i * of) + exp( -i * of))
 }
 
 @Suppress("unused")
