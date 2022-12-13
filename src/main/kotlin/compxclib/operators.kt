@@ -1,5 +1,7 @@
 package compxclib
 
+import compxclib.functions.toComplex
+
 //extension of operators with the Number class
 operator fun Number.plus(cNumber: CNumber): CNumber {
     return CNumber(cNumber.re() + this.toDouble(), cNumber.im())

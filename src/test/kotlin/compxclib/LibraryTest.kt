@@ -1,9 +1,8 @@
 package compxclib
 
-import kotlin.math.PI
-import kotlin.math.sqrt
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import kotlin.math.*
+import kotlin.test.*
+import compxclib.functions.*
 
 class LibraryTest {
     @Test
@@ -115,11 +114,11 @@ class LibraryTest {
             CNumber(0, 1).pow(2).toReal()
         )
     }
-    @Test
+    /*@Test
     fun testPolar(){
         assertEquals(
             CNumber(1,1),
             complexFromPolar(PI/4, sqrt(2.0))
         )
-    }
+    }*/
 }

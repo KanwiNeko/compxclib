@@ -1,5 +1,7 @@
 package compxclib
 
+import compxclib.functions.*
+import kotlin.jvm.Throws
 import kotlin.math.*
 
 //Main complex class
@@ -11,11 +13,11 @@ data class CNumber(private val real: Number,private val imaginary: Number){
 
     // main methods of the class
     @SuppressWarnings
-    fun conjugate(): CNumber{
+    fun conjugate(): CNumber {
         return CNumber(re, -1 * im)
     }
 
-    @SuppressWarnings
+    @Throws(IllegalConversionArgument::class)
     fun toReal(): Double {
         if (this.im == 0.0) {
             return this.re
