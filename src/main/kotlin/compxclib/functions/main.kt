@@ -1,10 +1,10 @@
 package compxclib.functions
 
 import compxclib.CNumber
-import compxclib.Library
+import compxclib.Constants
 import kotlin.math.*
 
-val i = Library.i
+val i = Constants.i()
 //Magnitude of the number, hypotenuse of the triangle with sides
 //Im(z) and Re(z)
 fun mag(cNumber: CNumber): Double {

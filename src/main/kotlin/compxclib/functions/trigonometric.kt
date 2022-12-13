@@ -3,10 +3,11 @@ package compxclib.functions
 import compxclib.*
 import kotlin.math.PI
 
+
 // trigonometric functions
 @Suppress("unused")
 fun sin(of: CNumber): CNumber {
-    return (1/2) * (exp(i * of) - exp( -i * of))
+    return (-i/2) * (exp(i * of) - exp( -i * of))
 }
 
 @Suppress("unused")
@@ -35,18 +36,20 @@ fun csc(of : CNumber): CNumber {
 }
 
 //inverse trigonometric functions
-fun arcsin(of: CNumber): CNumber {
-    return -i * ln(i * of + sqrt(1 - of.pow(2)))
+fun arcsin(of: CNumber, n: Int = 0): Array<CNumber> {
+    val ap = -i*ln(i*of + sqrt(1 - of * of))
+    val am = PI/2 + 2*PI*n +i*ln(i*of - sqrt(1 - of * of))
+    return arrayOf(ap, am)
 }
 
 @Suppress("unused")
 fun arccos(of: CNumber): CNumber {
-    return 1/2 * (PI - 2* arcsin(of))
+    return 1/2 * (PI - 2 * arcsin(of)[0])
 }
 
 @Suppress("unused")
-fun arctan(of: CNumber): CNumber {
-    return 1/(2* i) * ln((1 - of) / (1 + of))
+fun arctan(of: CNumber, n: Int = 0): CNumber {
+    return 1/(2* i) * ln((1 - of) / (1 + of), n)
 }
 
 @Suppress("unused")
@@ -61,5 +64,5 @@ fun arcsec(of: CNumber): CNumber {
 
 @Suppress("unused")
 fun arccsc(of: CNumber): CNumber {
-    return arcsin(1/of)
+    return arcsin(1/of)[0]
 }
