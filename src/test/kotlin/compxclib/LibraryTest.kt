@@ -8,19 +8,19 @@ class LibraryTest {
     @Test
     fun testMag() {
         assertEquals(5.0,
-            CNumber(3, 4).magnitude,
+            CNumber(3, 4).mag(),
             "the magnitude of the complex number should be 5")
     }
     @Test
     fun testArg() {
         assertEquals(
             PI,
-            CNumber(-1, 0).argument,
+            CNumber(-1, 0).arg(),
             "The argument of the complex number -1 + 0i should be pi"
         )
         assertEquals(
             0.0,
-            CNumber(1, 0).argument,
+            CNumber(1, 0).arg(),
             "The argument of the complex number 1 + 0i should be 0"
         )
     }

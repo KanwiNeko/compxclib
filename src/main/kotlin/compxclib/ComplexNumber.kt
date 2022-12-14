@@ -8,8 +8,8 @@ import kotlin.math.*
 data class CNumber(private val real: Number,private val imaginary: Number){
     private val re = real.toDouble()
     private val im = imaginary.toDouble()
-    val magnitude: Double = mag(this)
-    val argument: Double = arg(this)
+    private var mag: Double? = null
+    private var arg: Double? = null
 
     // main methods of the class
     @SuppressWarnings
@@ -74,14 +74,28 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     }
 
     override fun toString(): String {
+
+        val a = when(sign(im)) {
+            -1.0 -> "-"
+            else -> "+"
+        }
+
         return if (floor(re) == ceil(re) && floor(im) == ceil(im)) {
-            re.roundToInt().toString() + " + " + im.roundToInt().toString() + "i"
+            re.roundToInt().toString() + " $a " + abs(im).roundToInt().toString() + "i"
         } else
-            re.toString() + " + " + im.toString() + "i"
+            re.toString() + " $a " + abs(im).toString() + "i"
+    }
+
+    fun mag(): Double {
+        when(mag) { null -> mag = mag(this) }
+        return mag!!
+    }
+    fun arg(): Double {
+        when(arg) { null -> arg = arg(this) }
+        return arg!!
     }
 
     // Re and Im functions
     fun re(): Double { return re }
     fun im(): Double { return im }
-
 }

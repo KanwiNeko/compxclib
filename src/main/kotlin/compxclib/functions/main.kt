@@ -7,21 +7,13 @@ import kotlin.math.*
 val i = Constants.i()
 //Magnitude of the number, hypotenuse of the triangle with sides
 //Im(z) and Re(z)
-fun mag(cNumber: CNumber): Double {
-	return sqrt(cNumber.re().pow(2) + cNumber.im().pow(2))
+fun mag(of: CNumber): Double {
+	return sqrt(of.re().pow(2) + of.im().pow(2))
 }
 
 //Argument of the number
-fun arg(number: CNumber): Double {
-	val rarg = atan(number.im() /
-			number.re())
-	//The argument of a complex number is always between (-pi, pi]
-	return when{
-		number.im() > 0 && number.re() < 0 -> rarg + PI
-		number.im() < 0 && number.re() < 0 -> rarg - PI
-		number.im() == 0.toDouble() && number.re() < 1 -> PI
-		else -> rarg
-	}
+fun arg(of: CNumber): Double {
+	return atan2(of.im(), of.re())
 }
 
 // to complex functions, where we define the conversion between reals and complex

@@ -3,7 +3,6 @@ package compxclib.functions
 import compxclib.*
 import kotlin.math.PI
 
-
 // trigonometric functions
 @Suppress("unused")
 fun sin(of: CNumber): CNumber {
@@ -36,33 +35,34 @@ fun csc(of : CNumber): CNumber {
 }
 
 //inverse trigonometric functions
-fun arcsin(of: CNumber, n: Int = 0): Array<CNumber> {
-    val ap = -i*ln(i*of + sqrt(1 - of * of))
-    val am = PI/2 + 2*PI*n +i*ln(i*of - sqrt(1 - of * of))
-    return arrayOf(ap, am)
+fun arcsin(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): CNumber {
+    return when(sqrtBranch) {
+        SqrtBranch.POSITIVE -> -i * ln(i*of + sqrt(1 - of.pow(2))) + 2*PI*intBranch
+        SqrtBranch.NEGATIVE -> -i * ln(i*of - sqrt(1 - of.pow(2))) + 2*PI*intBranch
+    }
 }
 
 @Suppress("unused")
-fun arccos(of: CNumber): CNumber {
-    return 1/2 * (PI - 2 * arcsin(of)[0])
+fun arccos(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): CNumber {
+    return PI/2 - arcsin(of, sqrtBranch, intBranch)
 }
 
 @Suppress("unused")
-fun arctan(of: CNumber, n: Int = 0): CNumber {
-    return 1/(2* i) * ln((1 - of) / (1 + of), n)
+fun arctan(of: CNumber, intBranch: Int = 0): CNumber {
+    return -i/2 * ln((1 - of) / (1 + of), intBranch)
 }
 
 @Suppress("unused")
-fun arccot(of: CNumber): CNumber {
-    return arctan( 1 / of)
+fun arccot(of: CNumber, intBranch: Int = 0): CNumber {
+    return arctan( 1 / of, intBranch)
 }
 
 @Suppress("unused")
-fun arcsec(of: CNumber): CNumber {
-    return arccos(1/of)
+fun arcsec(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): CNumber {
+    return arccos(1/of, sqrtBranch, intBranch)
 }
 
 @Suppress("unused")
-fun arccsc(of: CNumber): CNumber {
-    return arcsin(1/of)[0]
+fun arccsc(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): CNumber {
+    return arcsin(1/of, sqrtBranch, intBranch)
 }

@@ -25,7 +25,7 @@ fun Number.pow(to: CNumber): CNumber {
 
 @Suppress("unused")
 fun sqrt(of: CNumber): CNumber {
-    return of.pow(1/2)
+    return of.pow(0.5)
 }
 
 @Suppress("unused")
