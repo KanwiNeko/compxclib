@@ -1,3 +1,5 @@
+<div id="top"></div>
+
 <div align=center>
 <img src="https://github.com/KanwiNeko/compxclib/blob/main/assets/Repo%20Icon.png?raw=true" alt="Repository Icon" width="200">
 <h1> <b>CompxCLib</b> </h1>
@@ -17,8 +19,6 @@ A complete library for all of your <b>complex</b> needs!
 [![license][License]][License-url]
 [![pull requests][PullRequests]][PullRequests-url]
 
-
-
 </div>
 
 <details>
@@ -31,7 +31,7 @@ A complete library for all of your <b>complex</b> needs!
                 </ul>
             <li><a href="#Getting Started">Getting Started</a></li>
                 <ul>
-                    <li><a href="#Installation">Prerequisites</a></li>
+                    <li><a href="#Prerequisites">Prerequisites</a></li>
                     <li><a href="#Installation">Installation</a></li>
                 </ul>
             <li><a href="#Usage">Usage</a></li>
@@ -43,7 +43,23 @@ A complete library for all of your <b>complex</b> needs!
         </ol>
 </details>
 
+---
+
 ## About
+CompxCLib is a library targeted at everyone that needs to work with complex numbers in a straightforward and elegant manner, utilizing the features of the Kotlin language to make it accessible and simple.
+
+*but why not use one of the many libraries out there?* compxclib has unique features that make using complex numbers a *breeze*.
+### Inspiration
+### Tools used
+## Getting Started
+### Prerequisites
+### Installation
+## Usage
+## Roadmap
+## Contributing
+## License
+## Contact
+## Acknowledgements
 
 <!-- LINKS AND IMAGES -->
 
