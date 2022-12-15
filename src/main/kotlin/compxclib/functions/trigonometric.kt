@@ -11,7 +11,7 @@ fun sin(of: CNumber): CNumber {
 
 @Suppress("unused")
 fun cos(of: CNumber): CNumber {
-    return (1/2) * (exp(i * of) + exp( -i * of))
+    return sin(of + PI/2)
 }
 
 @Suppress("unused")

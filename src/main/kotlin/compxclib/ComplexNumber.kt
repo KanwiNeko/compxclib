@@ -3,15 +3,23 @@ package compxclib
 import compxclib.functions.*
 import kotlin.jvm.Throws
 import kotlin.math.*
+import kotlin.Any as Any
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 //Main complex class
 data class CNumber(private val real: Number,private val imaginary: Number){
+    // -------------------------------------------------------------
+    // Setting main fields of the class
+    // -------------------------------------------------------------
     private val re = real.toDouble()
     private val im = imaginary.toDouble()
     private var mag: Double? = null
     private var arg: Double? = null
 
+    // -------------------------------------------------------------
     // main methods of the class
+    // -------------------------------------------------------------
     @SuppressWarnings
     fun conjugate(): CNumber {
         return CNumber(re, -1 * im)
@@ -26,8 +34,11 @@ data class CNumber(private val real: Number,private val imaginary: Number){
         }
     }
 
+    // -------------------------------------------------------------
     // definition of operators
-    // between complex numbers
+    // -------------------------------------------------------------
+
+    // binary operators between complex numbers
     operator fun plus(b: CNumber): CNumber{
         return CNumber(re + b.re,
             im + b.im)
@@ -49,7 +60,11 @@ data class CNumber(private val real: Number,private val imaginary: Number){
         return zwc * wwc
     }
 
-    // operators between a real number and a complex number
+    operator fun rem(b: CNumber): CNumber{
+        return -b * floor(this / b) + this.re + i * this.im
+    }
+
+    // binary operators between a real number and a complex number
     operator fun plus(b: Number): CNumber{
         return CNumber(this.re + b.toDouble(),
             this.im)
@@ -69,10 +84,39 @@ data class CNumber(private val real: Number,private val imaginary: Number){
         return this / b.toComplex()
     }
 
+    //Increments and Decrements
+    operator fun inc(parameter: Parameter = Parameter.BOTH): CNumber {
+        return when(parameter) {
+            Parameter.REAL -> CNumber(re + 1, im)
+            Parameter.IMAGINARY -> CNumber(re, im + 1)
+            else -> CNumber(re + 1, im + 1)
+        }
+    }
+
+    operator fun dec(parameter: Parameter = Parameter.BOTH): CNumber {
+        return when(parameter) {
+            Parameter.REAL -> CNumber(re - 1, im)
+            Parameter.IMAGINARY -> CNumber(re, im - 1)
+            else -> CNumber(re - 1, im - 1)
+        }
+    }
+
+    //other operators
     operator fun unaryMinus(): CNumber{
         return CNumber(-1 *  re, -1 * im)
     }
 
+    override operator fun equals(other: Any?): Boolean {
+        return when (other) {
+            is CNumber -> checkEquals(other)
+            is Number -> checkEquals(other.toDouble().toComplex())
+            else -> throw InvalidComparison("Cannot compare CNumber to $other")
+        }
+    }
+
+    // -------------------------------------------------------------
+    //overriding Any class methods
+    // -------------------------------------------------------------
     override fun toString(): String {
 
         val a = when(sign(im)) {
@@ -86,6 +130,46 @@ data class CNumber(private val real: Number,private val imaginary: Number){
             re.toString() + " $a " + abs(im).toString() + "i"
     }
 
+    override fun hashCode(): Int {
+        var result = re.hashCode()
+        result = 31 * result + im.hashCode()
+        return result
+    }
+
+    // -------------------------------------------------------------
+    // Other methods
+    // -------------------------------------------------------------
+    private fun checkEquals(b: CNumber): Boolean {
+        val roundTo = Constants.getDefaultRound()
+        val thisNumber = this.round(roundTo)
+        val otherNumber = b.round(roundTo)
+
+        val reals = thisNumber.re() == otherNumber.re()
+        val imaginaries = thisNumber.im() == otherNumber.im()
+
+        return reals && imaginaries
+
+    }
+
+    @SuppressWarnings
+    fun round(places: Int): CNumber{
+        val reRounded = BigDecimal(this.re()).setScale(places, RoundingMode.HALF_EVEN)
+        val imRounded = BigDecimal(this.im()).setScale(places, RoundingMode.HALF_EVEN)
+        return CNumber(reRounded, imRounded)
+    }
+
+    fun roundToGaussianInteger(): CNumber {
+        return this.round(0)
+    }
+
+    @Suppress("unused")
+    fun divides(parameter: CNumber): Boolean {
+        return parameter % this == 0.0.toComplex()
+    }
+
+    // -------------------------------------------------------------
+    // Getters
+    // -------------------------------------------------------------
     fun mag(): Double {
         when(mag) { null -> mag = mag(this) }
         return mag!!
@@ -98,4 +182,5 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     // Re and Im functions
     fun re(): Double { return re }
     fun im(): Double { return im }
+
 }

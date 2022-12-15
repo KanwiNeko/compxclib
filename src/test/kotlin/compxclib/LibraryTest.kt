@@ -121,4 +121,11 @@ class LibraryTest {
             complexFromPolar(PI/4, sqrt(2.0))
         )
     }*/
+    @Test
+    fun testToGaussianInteger() {
+        assertEquals(
+            CNumber(4.0, 5.0),
+            CNumber(4.5, 5.1).roundToGaussianInteger()
+        )
+    }
 }

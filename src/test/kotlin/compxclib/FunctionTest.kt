@@ -1,6 +1,7 @@
 package compxclib
 
 import kotlin.test.*
+import kotlin.math.cosh
 import compxclib.functions.*
 
 class FunctionTest {
@@ -22,7 +23,13 @@ class FunctionTest {
             sin(i),
             "The sin of i should be 1.1752i")
     }
-
+    /*@Test
+    fun cosTest(){
+        assertEquals(
+            cosh((1.0) - 0.0000000000000001).toComplex(),
+            cos(i)
+        )
+    }*/
     @Test
     fun arcsinTest(){
         assertEquals(
@@ -30,4 +37,11 @@ class FunctionTest {
             arcsin( 2.toComplex(), SqrtBranch.POSITIVE, 0)
         )
     }
+    /*@Test
+    fun arccosTest(){
+        assertEquals(
+            -i * 1.3169578969248172,
+            arccos(2.toComplex(), SqrtBranch.POSITIVE, 0)
+            )
+        }*/
 }
