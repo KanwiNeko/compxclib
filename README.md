@@ -15,7 +15,7 @@ A complete library for all of your <b>complex</b> needs!
 [![stars][Stars]][Stars-url]
 [![issues][Issues]][Issues-url]
 [![license][License]][License-url]
-[![pullrequests][PullRequests]][PullRequests-url]
+[![pull requests][PullRequests]][PullRequests-url]
 
 
 
@@ -25,6 +25,21 @@ A complete library for all of your <b>complex</b> needs!
     <summary>Table of contents</summary>
         <ol>
             <li><a href="#About">About</a></li>
+                <ul>
+                    <li><a href="#Inspiration">Inspiration</a></li>
+                    <li><a href="#Tools used">Tools used</a></li>
+                </ul>
+            <li><a href="#Getting Started">Getting Started</a></li>
+                <ul>
+                    <li><a href="#Installation">Prerequisites</a></li>
+                    <li><a href="#Installation">Installation</a></li>
+                </ul>
+            <li><a href="#Usage">Usage</a></li>
+            <li><a href="#Roadmap">Roadmap</a></li>
+            <li><a href="#Contributing">Contributing</a></li>
+            <li><a href="#License">License</a></li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#Acknowledgements">Acknowledgements</a></li>
         </ol>
 </details>
 
