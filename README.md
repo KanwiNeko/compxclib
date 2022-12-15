@@ -1,5 +1,5 @@
 <div align=center>
-<img src="https://github.com/KanwiNeko/compxclib/blob/main/assets/Repo%20Icon.png?raw=true" alt="Repository Icon">
+<img src="https://github.com/KanwiNeko/compxclib/blob/main/assets/Repo%20Icon.png?raw=true" alt="Repository Icon" width="200">
 <h1> <b>CompxCLib</b> </h1>
 Complex Complete Library
 <br/>
