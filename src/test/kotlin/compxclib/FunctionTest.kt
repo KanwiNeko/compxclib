@@ -23,13 +23,12 @@ class FunctionTest {
             sin(i),
             "The sin of i should be 1.1752i")
     }
-    /*@Test
+    @Test
     fun cosTest(){
-        assertEquals(
-            cosh((1.0) - 0.0000000000000001).toComplex(),
-            cos(i)
+        assert(
+            cosh(1.0).toComplex() == cos(i)
         )
-    }*/
+    }
     @Test
     fun arcsinTest(){
         assertEquals(

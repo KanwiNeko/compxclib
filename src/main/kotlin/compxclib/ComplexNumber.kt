@@ -153,8 +153,8 @@ data class CNumber(private val real: Number,private val imaginary: Number){
 
     @SuppressWarnings
     fun round(places: Int): CNumber{
-        val reRounded = BigDecimal(this.re()).setScale(places, RoundingMode.HALF_EVEN)
-        val imRounded = BigDecimal(this.im()).setScale(places, RoundingMode.HALF_EVEN)
+        val reRounded = BigDecimal(this.re()).setScale(places, RoundingMode.FLOOR)
+        val imRounded = BigDecimal(this.im()).setScale(places, RoundingMode.FLOOR)
         return CNumber(reRounded, imRounded)
     }
 
