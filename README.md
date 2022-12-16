@@ -50,7 +50,9 @@ CompxCLib is a library targeted at everyone that needs to work with complex numb
 
 *but why not use one of the many libraries out there?* compxclib has unique features that make using complex numbers a *breeze*.
 ### Inspiration
+The reason I started working on this library was that I'm in love with complex algebra and I wanted to have a simple-to-use tool in order to create interesting and aesthetically pleasing simulations.
 ### Tools used
+The library was built using [Gradle][Gradle], the graphics in this document were made using [Processing][Processing] and the IDE used to code the library was [IntelliJ IDEA][Idea], other tools used were [Shadow Jar][ShadowJar] and [Jetbrains Kotlin][Kotlin]
 ## Getting Started
 ### Prerequisites
 ### Installation
@@ -78,3 +80,8 @@ CompxCLib is a library targeted at everyone that needs to work with complex numb
 [PullRequests-url]: https://github.com/KanwiNeko/compxclib/pulls
 
 [README-inspiration]: https://github.com/othneildrew/Best-README-Template
+[Gradle]: https://gradle.org/
+[Processing]: https://processing.org/
+[Idea]: https://www.jetbrains.com/idea/
+[ShadowJar]: https://github.com/johnrengelman/shadow
+[Kotlin]: https://kotlinlang.org/
