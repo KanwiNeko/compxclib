@@ -20,7 +20,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-group = 'gay.kanwi.git'
+group = 'com.github.kanwineko'
 
 repositories {
     // Use Maven Central for resolving dependencies.
