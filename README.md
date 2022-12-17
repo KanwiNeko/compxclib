@@ -75,6 +75,9 @@ These were some of the tools I used to build this project (except processing, th
 ### Prerequisites
 ### Installation
 ## Usage
+
+[![Release](https://jitpack.io/v/kanwineko/compxclib.svg?style=flat-square)](https://jitpack.io/#kanwineko/compxclib)
+
 ## Roadmap
 ## Contributing
 ## License
