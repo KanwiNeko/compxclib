@@ -13,9 +13,14 @@ plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
 
+    // Maven to build to the local library
+    id 'maven-publish'
+
     // shadow jar, used to build fat jars
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
+
+group = 'gay.kanwi.git'
 
 repositories {
     // Use Maven Central for resolving dependencies.
