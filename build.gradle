@@ -21,7 +21,7 @@ plugins {
 }
 
 group = 'com.github.kanwineko'
-version = 'v1.0-beta'
+version = 'v1.0-beta.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
