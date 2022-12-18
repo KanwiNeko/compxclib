@@ -47,15 +47,16 @@ A complete library for all of your <b>complex</b> needs!
 
 ## About
 
-<!--
+
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/Graphs/1.png" alt="Graph of a complex function" width="200">
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/Graphs/2.png" alt="Graph of a complex function" width="200">
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/Graphs/3.png" alt="Graph of a complex function" width="200">
+
+<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/1.png" alt="Graph of a complex function" width="300">
+<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/2.png" alt="Graph of a complex function" width="300">
+<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/3.png" alt="Graph of a complex function" width="300">
 
 </div>
--->
+
 
 CompxCLib is a library targeted at everyone that needs to work with complex numbers in a straightforward and elegant manner, utilizing the features of the Kotlin language to make it accessible and simple.
 
