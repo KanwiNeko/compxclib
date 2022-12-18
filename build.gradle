@@ -21,6 +21,10 @@ plugins {
 }
 
 group = 'com.github.kanwineko'
+version = 'v1.0-beta'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -54,41 +58,20 @@ shadowJar {
     archiveVersion.set('')
 }
 
-
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
 
 publishing {
     publications {
-        maven(MavenPublication) {
-
-            groupId = 'com.github.kanwineko'
-            artifactId = 'v0.1-beta'
-            version = 'v0.1-beta'
-
-
-            pom {
-                name = 'compxclib'
-                description = 'Complex Complete Library, a feature rich complex numbers library for Kotlin and Java'
-                url = 'https://github.com/KanwiNeko/compxclib'
-                licenses {
-                    license {
-                        name = ' MIT license '
-                        url = 'https://github.com/KanwiNeko/compxclib/blob/main/LICENSE'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'kanwi'
-                        name = 'Katherine'
-                        email = 'business@kanwi.gay'
-                    }
-                }
-                scm {
-                    connection = 'git@github.com:KanwiNeko/compxclib.git'
-                    developerConnection = 'git@github.com:KanwiNeko/compxclib.git'
-                    url = 'https://github.com/KanwiNeko/compxclib'
-                }
-            }
+        mavenJava(MavenPublication) {
+            from components.java
         }
     }
 }
 
+wrapper {
+    gradleVersion = "7.3.3"
+    distributionType = Wrapper.DistributionType.ALL
+}
