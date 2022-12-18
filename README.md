@@ -51,9 +51,9 @@ A complete library for all of your <b>complex</b> needs!
 <div align="center">
 
 
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/1.png" alt="Graph of a complex function" width="300">
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/2.png" alt="Graph of a complex function" width="300">
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/3.png" alt="Graph of a complex function" width="300">
+<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/1.png" alt="Graph of a complex function" width="250">
+<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/2.png" alt="Graph of a complex function" width="250">
+<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/3.png" alt="Graph of a complex function" width="250">
 
 </div>
 
