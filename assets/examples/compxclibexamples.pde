@@ -3,18 +3,21 @@ import compxclib.*;
 final float ninetyDeg = PI / 2;
 final float threeHundredAndSixtyDeg = PI * 2;
 final int renderSize = 10;
+final float conversion = 180 / PI;
 
 float argOfMethod(CNumber myComplex) {
     CNumber myCNumber = new CNumber(myComplex.re(), myComplex.im());
-    float myDegree = (float)myCNumber.arg();
+    Double myDegree = myComplex.arg();
     
     if (myDegree < 0){
       myDegree += threeHundredAndSixtyDeg;
     }
     
-    myDegree *= 180 / PI;
+    myDegree *= conversion;
     
-    return myDegree;
+    println("Real degree: " + myDegree);
+    
+    return Float.valueOf(String.valueOf(myDegree));
 }
 
 void setup() {
@@ -23,11 +26,12 @@ void setup() {
     for (int i = 0; i < width; i++){
       for (int j = 0; j < height; j++){
         SqrtBranch sqrtBranch = SqrtBranch.POSITIVE;
-        CNumber currentPixel = new CNumber(i - width/2,-j + height/2).div(renderSize);
+        CNumber currentPixel = new CNumber((int)(i - width/2),(int)(-j + height/2)).div(renderSize);
+        println("Current pixel: " + currentPixel);
         //CNumber transformedPixel = compxclib.functions.TrigonometricKt.sin(currentPixel);
         //CNumber transformedPixel = compxclib.functions.TrigonometricKt.sec(currentPixel);
         //CNumber transformedPixel = compxclib.functions.TrigonometricKt.arcsin(currentPixel, sqrtBranch, 0);
-        //CNumber transformedPixel = compxclib.functions.LogarithmicalKt.ln(currentPixel, 0);
+        //CNumber transformedPixel = compxclib.functions.LogarithmicKt.ln(currentPixel, 0);
         //CNumber transformedPixel = compxclib.functions.PrecalculusKt.floor(currentPixel);
         //CNumber transformedPixel = compxclib.functions.HyperbolicKt.sinh(currentPixel);
         CNumber transformedPixel = compxclib.functions.ExponentialKt.exp(currentPixel);
@@ -44,7 +48,9 @@ void setup() {
         } catch (IllegalArgumentException e) {
           continue;
         }*/
-        stroke(round(argOfMethod(transformedPixel)), 360, (float)transformedPixel.mag()*360);
+        float currentArg = argOfMethod(transformedPixel);
+        //println("Curent pixel: " + currentPixel + " Argument: " + currentArg);
+        stroke(round(currentArg), 360, (float)transformedPixel.mag()*360);
         point(i,j);
       }
     }

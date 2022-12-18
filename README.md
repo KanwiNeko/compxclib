@@ -55,6 +55,8 @@ A complete library for all of your <b>complex</b> needs!
 <img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/2.png" alt="Graph of a complex function" width="250">
 <img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/3.png" alt="Graph of a complex function" width="250">
 
+[^1]
+
 </div>
 
 
@@ -84,6 +86,8 @@ These were some of the tools I used to build this project (except processing, th
 ## License
 ## Contact
 ## Acknowledgements
+### Footnotes
+[^1]: The images where generated using [Processing]
 
 <!-- LINKS AND IMAGES -->
 
