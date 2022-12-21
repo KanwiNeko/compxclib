@@ -1,37 +1,37 @@
 package compxclib.functions
 
-import compxclib.CNumber
+import compxclib.ComplexNumber
 import compxclib.div
 
 // sinix = i*sinh(x)
 // -i * sin(iz) = sinh(z)
 
 @Suppress("unused")
-fun sinh(of: CNumber): CNumber {
+fun sinh(of: ComplexNumber): ComplexNumber {
     return -i * sin(i * of)
 }
 
 @Suppress("unused")
-fun cosh(of: CNumber): CNumber {
+fun cosh(of: ComplexNumber): ComplexNumber {
     return cos(i * of)
 }
 
 @Suppress("unused")
-fun tanh(of: CNumber): CNumber {
+fun tanh(of: ComplexNumber): ComplexNumber {
     return sinh(of) / cosh(of)
 }
 
 @Suppress("unused")
-fun coth(of: CNumber): CNumber {
+fun coth(of: ComplexNumber): ComplexNumber {
     return 1 / tanh(of)
 }
 
 @Suppress("unused")
-fun sech(of: CNumber): CNumber {
+fun sech(of: ComplexNumber): ComplexNumber {
     return 1 / cosh(of)
 }
 
 @Suppress("unused")
-fun csch(of: CNumber): CNumber {
+fun csch(of: ComplexNumber): ComplexNumber {
     return 1 / sinh(of)
 }

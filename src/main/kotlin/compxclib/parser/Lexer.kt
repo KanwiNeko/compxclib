@@ -1,0 +1,61 @@
+package compxclib.parser
+
+import compxclib.InvalidToken
+import java.lang.Double.parseDouble
+
+object Lexer {
+
+    private var stream = ""
+    private var cursor = 0
+
+    private fun at(): Char {
+        return this.stream[this.cursor]
+    }
+
+    private fun isNumeric(str: String): Boolean {
+        var result = true
+        try {
+            val num = parseDouble(str)
+        } catch (e: NumberFormatException) {
+            result = false
+        }
+        return result
+    }
+
+    fun tokenize(input: String): List<Pair<Tokens, String>> {
+        val tokens: MutableList<Pair<Tokens, String>> = mutableListOf()
+
+        this.stream = input
+        this.cursor = 0
+        while(this.cursor < this.stream.length) {
+            when (this.at()) {
+                ' ' -> Unit
+                '\n' -> Unit
+                '\t' -> Unit
+                '+' -> tokens += Pair(Tokens.OPERATOR, "+")
+                '-' -> tokens += Pair(Tokens.OPERATOR, "-")
+                '*' -> tokens += Pair(Tokens.OPERATOR, "*")
+                '/' -> tokens += Pair(Tokens.OPERATOR, "/")
+                'i' -> tokens += Pair(Tokens.OPERATOR, "i")
+                else -> {
+                    if (isNumeric(this.at().toString())) {
+                        var strNumber = ""
+                        while (this.cursor < this.stream.length && (isNumeric(this.at().toString()) || this.at() == '.')) {
+                            strNumber += this.at()
+                            this.cursor++
+                        }
+
+                        tokens += Pair(Tokens.NUMBER, strNumber)
+                        this.cursor--
+                    } else {
+                        throw InvalidToken("Invalid token at position ${this.at()}")
+                    }
+                }
+            }
+            this.cursor++
+        }
+        tokens += Pair(Tokens.EOF, "End Of File")
+        return tokens
+    }
+
+}

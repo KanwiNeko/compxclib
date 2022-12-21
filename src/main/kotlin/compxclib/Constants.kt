@@ -2,8 +2,8 @@ package compxclib
 
 object Constants {
 
-    fun i(): CNumber {
-        return CNumber(0,1)
+    fun i(): ComplexNumber {
+        return ComplexNumber(0,1)
     }
 
     private var defaultRound: Int = 13

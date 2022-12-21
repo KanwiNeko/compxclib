@@ -5,37 +5,37 @@ import kotlin.math.PI
 
 // trigonometric functions
 @Suppress("unused")
-fun sin(of: CNumber): CNumber {
+fun sin(of: ComplexNumber): ComplexNumber {
     return (-i/2) * (exp(i * of) - exp( -i * of))
 }
 
 @Suppress("unused")
-fun cos(of: CNumber): CNumber {
+fun cos(of: ComplexNumber): ComplexNumber {
     return sin(of + PI/2)
 }
 
 @Suppress("unused")
-fun tan(of: CNumber): CNumber {
+fun tan(of: ComplexNumber): ComplexNumber {
     return sin(of) / cos(of)
 }
 
 @Suppress("unused")
-fun cot(of: CNumber): CNumber {
+fun cot(of: ComplexNumber): ComplexNumber {
     return cos(of) / sin(of)
 }
 
 @Suppress("unused")
-fun sec(of: CNumber): CNumber {
+fun sec(of: ComplexNumber): ComplexNumber {
     return 1 / cos(of)
 }
 
 @Suppress("unused")
-fun csc(of : CNumber): CNumber {
+fun csc(of : ComplexNumber): ComplexNumber {
     return 1 / sin(of)
 }
 
 //inverse trigonometric functions
-fun arcsin(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): CNumber {
+fun arcsin(of: ComplexNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): ComplexNumber {
     return when(sqrtBranch) {
         SqrtBranch.POSITIVE -> -i * ln(i*of + sqrt(1 - of.pow(2))) + 2*PI*intBranch
         SqrtBranch.NEGATIVE -> -i * ln(i*of - sqrt(1 - of.pow(2))) + 2*PI*intBranch
@@ -43,26 +43,26 @@ fun arcsin(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch:
 }
 
 @Suppress("unused")
-fun arccos(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): CNumber {
+fun arccos(of: ComplexNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): ComplexNumber {
     return PI/2 - arcsin(of, sqrtBranch, intBranch)
 }
 
 @Suppress("unused")
-fun arctan(of: CNumber, intBranch: Int = 0): CNumber {
+fun arctan(of: ComplexNumber, intBranch: Int = 0): ComplexNumber {
     return -i/2 * ln((1 - of) / (1 + of), intBranch)
 }
 
 @Suppress("unused")
-fun arccot(of: CNumber, intBranch: Int = 0): CNumber {
+fun arccot(of: ComplexNumber, intBranch: Int = 0): ComplexNumber {
     return arctan( 1 / of, intBranch)
 }
 
 @Suppress("unused")
-fun arcsec(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): CNumber {
+fun arcsec(of: ComplexNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): ComplexNumber {
     return arccos(1/of, sqrtBranch, intBranch)
 }
 
 @Suppress("unused")
-fun arccsc(of: CNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): CNumber {
+fun arccsc(of: ComplexNumber, sqrtBranch: SqrtBranch = SqrtBranch.POSITIVE, intBranch: Int = 0): ComplexNumber {
     return arcsin(1/of, sqrtBranch, intBranch)
 }

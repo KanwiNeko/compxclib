@@ -68,8 +68,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.github.kanwineko'
             artifactId = 'compxclib'
-            version = 'v0.1.1-beta'
-
+            version = 'v0.1.2-beta'
             from components.java
         }
     }

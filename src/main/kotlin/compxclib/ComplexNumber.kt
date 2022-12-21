@@ -8,7 +8,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 //Main complex class
-data class CNumber(private val real: Number,private val imaginary: Number){
+data class ComplexNumber(private val real: Number, private val imaginary: Number){
     // -------------------------------------------------------------
     // Setting main fields of the class
     // -------------------------------------------------------------
@@ -21,8 +21,8 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     // main methods of the class
     // -------------------------------------------------------------
     @SuppressWarnings
-    fun conjugate(): CNumber {
-        return CNumber(re, -1 * im)
+    fun conjugate(): ComplexNumber {
+        return ComplexNumber(re, -1 * im)
     }
 
     @Throws(IllegalConversionArgument::class)
@@ -39,76 +39,76 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     // -------------------------------------------------------------
 
     // binary operators between complex numbers
-    operator fun plus(b: CNumber): CNumber{
-        return CNumber(re + b.re,
+    operator fun plus(b: ComplexNumber): ComplexNumber{
+        return ComplexNumber(re + b.re,
             im + b.im)
     }
 
-    operator fun minus(b: CNumber): CNumber{
-        return CNumber(this.re - b.re,
+    operator fun minus(b: ComplexNumber): ComplexNumber{
+        return ComplexNumber(this.re - b.re,
             this.im - b.im)
     }
 
-    operator fun times(b: CNumber): CNumber {
-        return CNumber(this.re * b.re - this.im * b.im,
+    operator fun times(b: ComplexNumber): ComplexNumber {
+        return ComplexNumber(this.re * b.re - this.im * b.im,
             this.re * b.im + this.im * b.re )
     }
 
-    operator fun div(b: CNumber): CNumber{
+    operator fun div(b: ComplexNumber): ComplexNumber{
         val wwc = 1/(b * b.conjugate()).toReal()
         val zwc = this * b.conjugate()
         return zwc * wwc
     }
 
-    operator fun rem(b: CNumber): CNumber{
+    operator fun rem(b: ComplexNumber): ComplexNumber{
         return -b * floor(this / b) + this.re + i * this.im
     }
 
     // binary operators between a real number and a complex number
-    operator fun plus(b: Number): CNumber{
-        return CNumber(this.re + b.toDouble(),
+    operator fun plus(b: Number): ComplexNumber{
+        return ComplexNumber(this.re + b.toDouble(),
             this.im)
     }
 
-    operator fun minus(b: Number): CNumber{
-        return CNumber(this.re - b.toDouble(),
+    operator fun minus(b: Number): ComplexNumber{
+        return ComplexNumber(this.re - b.toDouble(),
             this.im)
     }
 
-    operator fun times(b: Number): CNumber{
-        return CNumber(this.re * b.toDouble(),
+    operator fun times(b: Number): ComplexNumber{
+        return ComplexNumber(this.re * b.toDouble(),
             this.im * b.toDouble())
     }
 
-    operator fun div(b: Number): CNumber{
+    operator fun div(b: Number): ComplexNumber{
         return this / b.toComplex()
     }
 
     //Increments and Decrements
-    operator fun inc(parameter: Parameter = Parameter.BOTH): CNumber {
+    operator fun inc(parameter: Parameter = Parameter.BOTH): ComplexNumber {
         return when(parameter) {
-            Parameter.REAL -> CNumber(re + 1, im)
-            Parameter.IMAGINARY -> CNumber(re, im + 1)
-            else -> CNumber(re + 1, im + 1)
+            Parameter.REAL -> ComplexNumber(re + 1, im)
+            Parameter.IMAGINARY -> ComplexNumber(re, im + 1)
+            else -> ComplexNumber(re + 1, im + 1)
         }
     }
 
-    operator fun dec(parameter: Parameter = Parameter.BOTH): CNumber {
+    operator fun dec(parameter: Parameter = Parameter.BOTH): ComplexNumber {
         return when(parameter) {
-            Parameter.REAL -> CNumber(re - 1, im)
-            Parameter.IMAGINARY -> CNumber(re, im - 1)
-            else -> CNumber(re - 1, im - 1)
+            Parameter.REAL -> ComplexNumber(re - 1, im)
+            Parameter.IMAGINARY -> ComplexNumber(re, im - 1)
+            else -> ComplexNumber(re - 1, im - 1)
         }
     }
 
     //other operators
-    operator fun unaryMinus(): CNumber{
-        return CNumber(-1 *  re, -1 * im)
+    operator fun unaryMinus(): ComplexNumber{
+        return ComplexNumber(-1 *  re, -1 * im)
     }
 
     override operator fun equals(other: Any?): Boolean {
         return when (other) {
-            is CNumber -> checkEquals(other)
+            is ComplexNumber -> checkEquals(other)
             is Number -> checkEquals(other.toDouble().toComplex())
             else -> throw InvalidComparison("Cannot compare CNumber to $other")
         }
@@ -139,7 +139,7 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     // -------------------------------------------------------------
     // Other methods
     // -------------------------------------------------------------
-    private fun checkEquals(b: CNumber): Boolean {
+    private fun checkEquals(b: ComplexNumber): Boolean {
         val roundTo = Constants.getDefaultRound()
         val thisNumber = this.round(roundTo)
         val otherNumber = b.round(roundTo)
@@ -152,18 +152,18 @@ data class CNumber(private val real: Number,private val imaginary: Number){
     }
 
     @SuppressWarnings
-    fun round(places: Int): CNumber{
+    fun round(places: Int): ComplexNumber{
         val reRounded = BigDecimal(this.re()).setScale(places, RoundingMode.FLOOR)
         val imRounded = BigDecimal(this.im()).setScale(places, RoundingMode.FLOOR)
-        return CNumber(reRounded, imRounded)
+        return ComplexNumber(reRounded, imRounded)
     }
 
-    fun roundToGaussianInteger(): CNumber {
+    fun roundToGaussianInteger(): ComplexNumber {
         return this.round(0)
     }
 
     @Suppress("unused")
-    fun divides(parameter: CNumber): Boolean {
+    fun divides(parameter: ComplexNumber): Boolean {
         return parameter % this == 0.0.toComplex()
     }
 

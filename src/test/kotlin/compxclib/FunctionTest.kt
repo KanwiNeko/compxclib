@@ -32,7 +32,7 @@ class FunctionTest {
     @Test
     fun arcsinTest(){
         assertEquals(
-            CNumber(1.5707963267948966, 1.3169578969248172),
+            ComplexNumber(1.5707963267948966, 1.3169578969248172),
             arcsin( 2.toComplex(), SqrtBranch.POSITIVE, 0)
         )
     }
