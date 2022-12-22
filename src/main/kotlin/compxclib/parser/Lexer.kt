@@ -1,5 +1,6 @@
 package compxclib.parser
 
+import compxclib.Constants
 import compxclib.InvalidToken
 import java.lang.Double.parseDouble
 
@@ -15,7 +16,7 @@ object Lexer {
     private fun isNumeric(str: String): Boolean {
         var result = true
         try {
-            val num = parseDouble(str)
+            parseDouble(str)
         } catch (e: NumberFormatException) {
             result = false
         }
@@ -36,7 +37,17 @@ object Lexer {
                 '-' -> tokens += Pair(Tokens.OPERATOR, "-")
                 '*' -> tokens += Pair(Tokens.OPERATOR, "*")
                 '/' -> tokens += Pair(Tokens.OPERATOR, "/")
+                '^' -> tokens += Pair(Tokens.OPERATOR, "^")
                 'i' -> tokens += Pair(Tokens.OPERATOR, "i")
+                // structure
+                '(' -> tokens += Pair(Tokens.STRUCTURE, "(")
+                ')' -> tokens += Pair(Tokens.STRUCTURE, ")")
+                '[' -> tokens += Pair(Tokens.STRUCTURE, "[")
+                ']' -> tokens += Pair(Tokens.STRUCTURE, "]")
+                '{' -> tokens += Pair(Tokens.STRUCTURE, "{")
+                '}' -> tokens += Pair(Tokens.STRUCTURE, "}")
+                '|' -> tokens += Pair(Tokens.STRUCTURE, "|")
+                // other
                 else -> {
                     if (isNumeric(this.at().toString())) {
                         var strNumber = ""
@@ -47,8 +58,23 @@ object Lexer {
 
                         tokens += Pair(Tokens.NUMBER, strNumber)
                         this.cursor--
-                    } else {
-                        throw InvalidToken("Invalid token at position ${this.at()}")
+                    }else {
+                        var willContinue = false
+                        val oldCursor = this.cursor
+                        var methodString = ""
+                        while (this.cursor < this.stream.length && this.cursor < this.cursor + Constants.getMaxMethodNameSize()){
+                            methodString += this.at()
+                            if (methodString in Dictionaries.methodAliases) {
+                                willContinue = true
+                                tokens += Pair(Tokens.METHOD, methodString)
+                                break
+                            }
+                            this.cursor++
+                        }
+                        if (!willContinue) {
+                            this.cursor = oldCursor
+                            throw InvalidToken("Invalid token at position ${this.cursor}:${this.at()}")
+                        }
                     }
                 }
             }

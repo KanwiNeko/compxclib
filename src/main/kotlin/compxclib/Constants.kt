@@ -6,6 +6,11 @@ object Constants {
         return ComplexNumber(0,1)
     }
 
+    private const val maxMethodNameSize = 10
+    fun getMaxMethodNameSize(): Int {
+        return maxMethodNameSize
+    }
+
     private var defaultRound: Int = 13
     @Suppress("unused")
     fun setDefaultRound(value: Int) {
