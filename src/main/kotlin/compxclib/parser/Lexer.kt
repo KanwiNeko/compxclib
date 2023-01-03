@@ -4,7 +4,7 @@ import compxclib.Constants
 import compxclib.InvalidToken
 import java.lang.Double.parseDouble
 
-object Lexer {
+internal object Lexer {
 
     private var stream = ""
     private var cursor = 0
@@ -38,7 +38,7 @@ object Lexer {
                 '*' -> tokens += Pair(Tokens.OPERATOR, "*")
                 '/' -> tokens += Pair(Tokens.OPERATOR, "/")
                 '^' -> tokens += Pair(Tokens.OPERATOR, "^")
-                'i' -> tokens += Pair(Tokens.OPERATOR, "i")
+                'i' -> tokens += Pair(Tokens.IMAGINARY_UNIT, "")
                 // structure
                 '(' -> tokens += Pair(Tokens.STRUCTURE, "(")
                 ')' -> tokens += Pair(Tokens.STRUCTURE, ")")
