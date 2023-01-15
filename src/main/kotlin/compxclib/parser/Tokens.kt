@@ -3,7 +3,9 @@ package compxclib.parser
 enum class Tokens {
     OPERATOR,
     NUMBER,
-    COMPLEXNUMBER,
+    REAL_NUMBER,
+    IMAGINARY_NUMBER,
+    COMPLEX_NUMBER,
     IMAGINARY_UNIT,
     METHOD,
     STRUCTURE,

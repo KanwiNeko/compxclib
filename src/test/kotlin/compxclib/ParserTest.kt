@@ -6,7 +6,10 @@ import compxclib.parser.*
 class ParserTest {
     @Test
     fun parserTest() {
-        println(Lexer.tokenize("arctan(ln(5.8458+7i))"))
+        val firstTokenization = Lexer.tokenize("arctan(ln(5.8458+7i))")
+        ComplexLexer.init(firstTokenization)
+        val secondTokenization = ComplexLexer.numberLexer()
+        println(secondTokenization)
         assertEquals(true, true)
     }
 }

@@ -7,3 +7,7 @@ enum class SqrtBranch {
 enum class Parameter {
     REAL, IMAGINARY, BOTH
 }
+
+enum class Sign {
+    POSITIVE, NEGATIVE
+}

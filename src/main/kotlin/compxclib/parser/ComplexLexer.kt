@@ -1,46 +1,98 @@
 package compxclib.parser
 
-import compxclib.ComplexNumber
+import compxclib.NumberLexerNotInitialized
+import compxclib.Sign
+
+typealias TokenTuple = Pair<Tokens, String>
+typealias ComplexList = List<TokenTuple>
+typealias MutableComplexList = MutableList<TokenTuple>
 
 internal object ComplexLexer {
+    private var tokenList: MutableComplexList? = null
+    private var returnedList: MutableComplexList = mutableListOf()
 
-    private var tokenList: List<Pair<Tokens, String>> = listOf()
-    private val lexedList: MutableList<Pair<Tokens, String>> = mutableListOf()
-    private var index = 0
+    private val skipTypes = arrayOf(
+        Tokens.EOF,
+        Tokens.METHOD,
+        Tokens.STRUCTURE,
+        Tokens.COMPLEX_NUMBER,
+        Tokens.REAL_NUMBER,
+        Tokens.IMAGINARY_NUMBER
+    )
 
-    fun mainLexer(oldList: List<Pair<Tokens, String>>): List<Pair<Tokens, String>> {
-        this.index = 0
-        this.tokenList = oldList
-        for (i in this.tokenList) {
-            if (i.first != Tokens.NUMBER && i.first != Tokens.IMAGINARY_UNIT){
-                lexedList += i
-                index++
-                continue
-            }
-            val startingIndex = index
-            when (i.first) {
-                Tokens.NUMBER -> {
-                    var nextToken = tokenList[index+1]
-                    when(nextToken.first) {
-                        Tokens.OPERATOR -> {
-                            if (nextToken.second == "+" || nextToken.second == "-") {
-                                nextToken = tokenList[index+2]
-                                when (nextToken.first) {
-                                    Tokens.NUMBER -> {}
-                                    Tokens.IMAGINARY_UNIT -> {}
-                                    else -> {}
-                                }
-                            } else continue
-                        }
-                        Tokens.IMAGINARY_UNIT -> {}
-                        else -> {}
-                    }
+    private val validOperators = arrayOf(
+        Pair(Tokens.OPERATOR, "+"),
+        Pair(Tokens.OPERATOR, "-")
+    )
+
+    private fun eatToken(): TokenTuple {
+        val temp = tokenList!![0]
+        tokenList!!.removeAt(0)
+        return temp
+    }
+
+    private fun at(): TokenTuple {
+        return tokenList!![0]
+    }
+
+    fun init(tokenList: ComplexList) {
+        this.tokenList = tokenList.toMutableList()
+    }
+
+    private fun nLexer(sign: Sign) {
+        val signString = when(sign) {
+            Sign.POSITIVE -> "+"
+            Sign.NEGATIVE -> "-"
+        }
+        when (at().first) {
+            Tokens.NUMBER -> {
+                returnedList += Pair(Tokens.OPERATOR, "+")
+                val numb = eatToken().second
+                returnedList += if (at().first == Tokens.IMAGINARY_UNIT) {
+                    eatToken()
+                    Pair(Tokens.IMAGINARY_NUMBER, "$signString$numb")
+                } else {
+                    Pair(Tokens.REAL_NUMBER, "$signString$numb")
                 }
-                Tokens.IMAGINARY_UNIT -> {}
-                else -> {}
+            }
+            Tokens.IMAGINARY_UNIT -> {
+                returnedList += Pair(Tokens.OPERATOR, "+")
+                eatToken()
+                returnedList += if (at().first == Tokens.NUMBER) {
+                    val number = eatToken().second
+                    Pair(Tokens.IMAGINARY_NUMBER, "$signString$number")
+                } else {
+                    Pair(Tokens.IMAGINARY_NUMBER, "${signString}1")
+                }
+            }
+            else -> {
+                returnedList += when (sign) {
+                    Sign.POSITIVE -> Pair(Tokens.OPERATOR, "+")
+                    Sign.NEGATIVE -> Pair(Tokens.OPERATOR, "-")
+                }
             }
         }
-        return lexedList.toList()
+    }
+
+    fun numberLexer(): ComplexList {
+        if (tokenList.isNullOrEmpty()) throw NumberLexerNotInitialized("Call ComplexLexer.init() before using this!")
+        while (tokenList!!.isNotEmpty()) {
+            if (at().first in skipTypes) {
+                returnedList += eatToken()
+                continue
+            }
+            if (at().first == Tokens.OPERATOR) {
+                if (at() in validOperators) {
+                    when(eatToken().second) {
+                        "+" -> nLexer(Sign.POSITIVE)
+                        "-" -> nLexer(Sign.NEGATIVE)
+                    }
+                } else {
+                    returnedList += eatToken()
+                }
+            }
+        }
+        return returnedList.toList()
     }
 
 }
