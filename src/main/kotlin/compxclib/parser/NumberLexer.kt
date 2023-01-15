@@ -7,7 +7,7 @@ typealias TokenTuple = Pair<Tokens, String>
 typealias ComplexList = List<TokenTuple>
 typealias MutableComplexList = MutableList<TokenTuple>
 
-internal object ComplexLexer {
+internal object NumberLexer {
     private var tokenList: MutableComplexList? = null
     private var returnedList: MutableComplexList = mutableListOf()
 
@@ -75,21 +75,27 @@ internal object ComplexLexer {
     }
 
     fun numberLexer(): ComplexList {
-        if (tokenList.isNullOrEmpty()) throw NumberLexerNotInitialized("Call ComplexLexer.init() before using this!")
+        if (tokenList.isNullOrEmpty()) throw NumberLexerNotInitialized("Call NumberLexer.init(your token list) before using this!")
         while (tokenList!!.isNotEmpty()) {
             if (at().first in skipTypes) {
                 returnedList += eatToken()
                 continue
             }
-            if (at().first == Tokens.OPERATOR) {
-                if (at() in validOperators) {
+            when(at().first) {
+                Tokens.OPERATOR -> {
+                    if (at() in validOperators) {
                     when(eatToken().second) {
                         "+" -> nLexer(Sign.POSITIVE)
                         "-" -> nLexer(Sign.NEGATIVE)
                     }
-                } else {
-                    returnedList += eatToken()
+                    } else {
+                        returnedList += eatToken()
+                    }
                 }
+                Tokens.NUMBER, Tokens.IMAGINARY_UNIT -> {
+                    nLexer(Sign.POSITIVE)
+                }
+                else -> {}
             }
         }
         return returnedList.toList()

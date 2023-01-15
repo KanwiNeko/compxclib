@@ -7,8 +7,8 @@ class ParserTest {
     @Test
     fun parserTest() {
         val firstTokenization = Lexer.tokenize("arctan(ln(5.8458+7i))")
-        ComplexLexer.init(firstTokenization)
-        val secondTokenization = ComplexLexer.numberLexer()
+        NumberLexer.init(firstTokenization)
+        val secondTokenization = NumberLexer.numberLexer()
         println(secondTokenization)
         assertEquals(true, true)
     }
