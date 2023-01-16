@@ -7,7 +7,7 @@ enum class Tokens {
     IMAGINARY_NUMBER,
     COMPLEX_NUMBER,
     IMAGINARY_UNIT,
-    METHOD,
+    FUNCTION,
     STRUCTURE,
     EOF
 }

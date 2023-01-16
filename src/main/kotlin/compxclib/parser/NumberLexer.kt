@@ -13,7 +13,7 @@ internal object NumberLexer {
 
     private val skipTypes = arrayOf(
         Tokens.EOF,
-        Tokens.METHOD,
+        Tokens.FUNCTION,
         Tokens.STRUCTURE,
         Tokens.COMPLEX_NUMBER,
         Tokens.REAL_NUMBER,

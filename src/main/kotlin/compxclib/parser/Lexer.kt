@@ -66,7 +66,7 @@ internal object Lexer {
                             methodString += this.at()
                             if (methodString in Dictionaries.methodAliases) {
                                 willContinue = true
-                                tokens += Pair(Tokens.METHOD, methodString)
+                                tokens += Pair(Tokens.FUNCTION, methodString)
                                 break
                             }
                             this.cursor++

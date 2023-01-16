@@ -1,12 +1,13 @@
-package compxclib
+package compxclib.parser
 
+import compxclib.ComplexNumber
+import compxclib.functions.ln
 import kotlin.test.*
-import compxclib.parser.*
 
 class ParserTest {
     @Test
     fun parserTest() {
-        val firstTokenization = Lexer.tokenize("arctan(ln(5.8458+7i))")
+        val firstTokenization = Lexer.tokenize("ln(24+i98)")
         NumberLexer.init(firstTokenization)
         val secondTokenization = NumberLexer.numberLexer()
         println(secondTokenization)
