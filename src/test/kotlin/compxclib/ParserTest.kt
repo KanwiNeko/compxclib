@@ -14,6 +14,7 @@ class ParserTest {
         val (thirdTokenization, numbers) = ComplexLexer.complexLexer(secondTokenization)
         println("Tokens: $thirdTokenization")
         println("Numbers: $numbers")
+        println("TEST FINALLY PASSED!!")
         assertEquals(true, true)
     }
 }
