@@ -3,18 +3,19 @@ package compxclib
 import compxclib.parser.ComplexLexer
 import compxclib.parser.Lexer
 import compxclib.parser.NumberLexer
+import compxclib.parser.Parser
 import kotlin.test.*
 
 class ParserTest {
     @Test
     fun parserTest() {
-        val firstTokenization = Lexer.tokenize("*4 + 5i + 6 * ln(i8)")
+        val firstTokenization = Lexer.tokenize("3 + sin(5 + 6)")
         NumberLexer.init(firstTokenization)
         val secondTokenization = NumberLexer.numberLexer()
         val (thirdTokenization, numbers) = ComplexLexer.complexLexer(secondTokenization)
-        println("Tokens: $thirdTokenization")
-        println("Numbers: $numbers")
+        val parser = Parser(thirdTokenization, numbers)
         println("TEST FINALLY PASSED!!")
-        assertEquals(true, true)
+        println(parser.parse())
+        assertEquals(expected = true, actual = true)
     }
 }

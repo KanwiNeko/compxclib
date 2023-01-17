@@ -6,7 +6,7 @@ import compxclib.functions.*
 object Dictionaries {
     private val complexLog: (ComplexNumber, ComplexNumber, Int) -> ComplexNumber = ::log
 
-    val methodAliases = arrayOf(
+    val functionAliases = arrayOf(
         "exp",
         "sqrt",
         "cbrt",
@@ -36,7 +36,7 @@ object Dictionaries {
         "mag",
         "arg"
     )
-    private val methods = arrayOf(
+    private val functions = arrayOf(
         ::exp,
         ::sqrt,
         ::cbrt,
@@ -67,6 +67,6 @@ object Dictionaries {
         ::arg
     )
 
-    val methodMap = methodAliases.zip(methods).toMap()
+    val functionMap = functionAliases.zip(functions).toMap()
 
 }

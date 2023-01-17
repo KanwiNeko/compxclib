@@ -64,9 +64,16 @@ object ComplexLexer {
         val removedIndexes = mutableListOf<Int>()
         for ((i, v) in tokenList.zip(0 until tokenList.size)) {
             val (leftNeighbor, rightNeighbor) = neighbors(v)
-            if(i.first != Tokens.OPERATOR) continue
-            if (leftNeighbor == leftParenthesisToken || leftNeighbor == null) removedIndexes += v
-            if (rightNeighbor == rightParenthesisToken || rightNeighbor == null) removedIndexes += v
+            if (i.first != Tokens.OPERATOR) continue
+            if (leftNeighbor == leftParenthesisToken || leftNeighbor == null) {
+                removedIndexes += v; continue
+            }
+            if (rightNeighbor == rightParenthesisToken || rightNeighbor == null) {
+                removedIndexes += v; continue
+            }
+            if (leftNeighbor.first == Tokens.OPERATOR && rightNeighbor.first in numbers) {
+                removedIndexes += v; continue
+            }
         }
         removedIndexes.reverse()
         for (i in removedIndexes) {
@@ -109,7 +116,8 @@ object ComplexLexer {
                             returnedList += Pair(Tokens.COMPLEX_NUMBER, "${returnedComplexList.size}")
                             parseDouble(eat().second)
                         } else {
-                            returnedList += positiveOperatorToken
+                            returnedList += Pair(Tokens.COMPLEX_NUMBER, "${returnedComplexList.size}")
+                            returnedList += sign
                             0.0
                         }
                     }
@@ -118,7 +126,8 @@ object ComplexLexer {
                             returnedList += Pair(Tokens.COMPLEX_NUMBER, "${returnedComplexList.size}")
                             parseDouble(eat().second)
                         } else {
-                            returnedList += positiveOperatorToken
+                            returnedList += Pair(Tokens.COMPLEX_NUMBER, "${returnedComplexList.size}")
+                            returnedList += sign
                             0.0
                         }
                     }

@@ -11,3 +11,11 @@ enum class Parameter {
 enum class Sign {
     POSITIVE, NEGATIVE
 }
+
+enum class Operator {
+    PLUS,
+    MINUS,
+    TIMES,
+    DIVIDE,
+    MODULO
+}

@@ -64,7 +64,7 @@ internal object Lexer {
                         var methodString = ""
                         while (this.cursor < this.stream.length && this.cursor < this.cursor + Constants.getMaxMethodNameSize()){
                             methodString += this.at()
-                            if (methodString in Dictionaries.methodAliases) {
+                            if (methodString in Dictionaries.functionAliases) {
                                 willContinue = true
                                 tokens += Pair(Tokens.FUNCTION, methodString)
                                 break
