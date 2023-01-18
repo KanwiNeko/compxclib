@@ -36,6 +36,16 @@ gradle-app.setting
 *.iml
 *.iws
 
+# gradle secret stuff
+*.properties
+/gradle.properties
+.properties
+6CB57815
+
+#ignore folder
+.ignore/
+*.gpg
+
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
