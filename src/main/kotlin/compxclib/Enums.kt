@@ -17,5 +17,6 @@ enum class Operator {
     MINUS,
     TIMES,
     DIVIDE,
-    MODULO
+    MODULO,
+    POWER
 }

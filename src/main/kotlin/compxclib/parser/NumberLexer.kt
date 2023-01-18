@@ -7,7 +7,7 @@ typealias TokenTuple = Pair<Tokens, String>
 typealias ComplexList = List<TokenTuple>
 typealias MutableComplexList = MutableList<TokenTuple>
 
-internal object NumberLexer {
+class NumberLexer(tokens: ComplexList) {
     private var tokenList: MutableComplexList? = null
     private var returnedList: MutableComplexList = mutableListOf()
 
@@ -19,6 +19,10 @@ internal object NumberLexer {
         Tokens.REAL_NUMBER,
         Tokens.IMAGINARY_NUMBER
     )
+
+    init {
+        this.tokenList = tokens.toMutableList()
+    }
 
     private val validOperators = arrayOf(
         Pair(Tokens.OPERATOR, "+"),
@@ -33,10 +37,6 @@ internal object NumberLexer {
 
     private fun at(): TokenTuple {
         return tokenList!![0]
-    }
-
-    fun init(tokenList: ComplexList) {
-        this.tokenList = tokenList.toMutableList()
     }
 
     private fun nLexer(sign: Sign) {

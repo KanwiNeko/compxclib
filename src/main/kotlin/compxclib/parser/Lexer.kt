@@ -4,7 +4,7 @@ import compxclib.Constants
 import compxclib.InvalidToken
 import java.lang.Double.parseDouble
 
-internal object Lexer {
+class Lexer(val input: String) {
 
     private var stream = ""
     private var cursor = 0
@@ -23,8 +23,8 @@ internal object Lexer {
         return result
     }
 
-    fun tokenize(input: String): List<Pair<Tokens, String>> {
-        val tokens: MutableList<Pair<Tokens, String>> = mutableListOf()
+    fun tokenize(): ComplexList {
+        val tokens: MutableComplexList = mutableListOf()
 
         this.stream = input
         this.cursor = 0
@@ -38,15 +38,18 @@ internal object Lexer {
                 '*' -> tokens += Pair(Tokens.OPERATOR, "*")
                 '/' -> tokens += Pair(Tokens.OPERATOR, "/")
                 '^' -> tokens += Pair(Tokens.OPERATOR, "^")
+                '%' -> tokens += Pair(Tokens.OPERATOR, "%")
                 'i' -> tokens += Pair(Tokens.IMAGINARY_UNIT, "")
                 // structure
                 '(' -> tokens += Pair(Tokens.STRUCTURE, "(")
                 ')' -> tokens += Pair(Tokens.STRUCTURE, ")")
+                /*
                 '[' -> tokens += Pair(Tokens.STRUCTURE, "[")
                 ']' -> tokens += Pair(Tokens.STRUCTURE, "]")
                 '{' -> tokens += Pair(Tokens.STRUCTURE, "{")
                 '}' -> tokens += Pair(Tokens.STRUCTURE, "}")
                 '|' -> tokens += Pair(Tokens.STRUCTURE, "|")
+                */
                 // other
                 else -> {
                     if (isNumeric(this.at().toString())) {

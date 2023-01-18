@@ -2,7 +2,7 @@ package compxclib.parser
 
 import compxclib.ComplexNumber
 
-object ComplexLexer {
+class ComplexLexer(val complexList: ComplexList) {
 
     // static variables used for checking
     private val leftParenthesisToken = Pair(Tokens.STRUCTURE, "(")
@@ -14,7 +14,7 @@ object ComplexLexer {
     )
 
     // dynamic variables using during logic
-    private lateinit var tokenList: MutableComplexList
+    private var tokenList: MutableComplexList = this.complexList.toMutableList()
     private var index = 0
 
     // parses a string into a double
@@ -82,9 +82,8 @@ object ComplexLexer {
         return removedIndexes.size
     }
 
-    fun complexLexer(complexList: ComplexList): Pair<ComplexList, List<ComplexNumber>> {
+    fun complexLexer(): Pair<ComplexList, List<ComplexNumber>> {
         // Assignments
-        this.tokenList = complexList.toMutableList()
         val returnedList: MutableComplexList = mutableListOf()
         val returnedComplexList: MutableList<ComplexNumber> = mutableListOf()
 
@@ -106,7 +105,6 @@ object ComplexLexer {
                 Tokens.IMAGINARY_NUMBER -> { imaginary = parseDouble(number.second) ; real = null}
                 else -> Unit
             }
-
             val sign = eat()
             if (sign == positiveOperatorToken) {
                 @Suppress("KotlinConstantConditions")
@@ -141,9 +139,7 @@ object ComplexLexer {
                 returnedList += Pair(Tokens.COMPLEX_NUMBER, "${returnedComplexList.size}")
                 returnedList += sign
             }
-
             returnedComplexList += ComplexNumber(real!!, imaginary!!)
-
         }
         return Pair(returnedList, returnedComplexList)
     }

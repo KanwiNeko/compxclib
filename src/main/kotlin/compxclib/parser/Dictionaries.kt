@@ -2,9 +2,27 @@ package compxclib.parser
 
 import compxclib.ComplexNumber
 import compxclib.functions.*
-
 object Dictionaries {
-    private val complexLog: (ComplexNumber, ComplexNumber, Int) -> ComplexNumber = ::log
+    private fun nthrt(input: ComplexNumber): ComplexNumber {
+        return nthrt(input, 1)
+    }
+    private fun ln(input: ComplexNumber): ComplexNumber {
+        return compxclib.functions.ln(input)
+    }
+
+    private fun complexLog(input: ComplexNumber): ComplexNumber {
+        return log(input, 10.toComplex())
+    }
+
+    private fun arcsin(input: ComplexNumber): ComplexNumber {return compxclib.functions.arcsin(input)}
+    private fun arccos(input: ComplexNumber): ComplexNumber {return compxclib.functions.arccos(input)}
+    private fun arctan(input: ComplexNumber): ComplexNumber {return compxclib.functions.arctan(input)}
+    private fun arccot(input: ComplexNumber): ComplexNumber {return compxclib.functions.arccot(input)}
+    private fun arcsec(input: ComplexNumber): ComplexNumber {return compxclib.functions.arcsec(input)}
+    private fun arccsc(input: ComplexNumber): ComplexNumber {return compxclib.functions.arccsc(input)}
+
+    private fun mag(input: ComplexNumber): ComplexNumber { return input.mag().toComplex() }
+    private fun arg(input: ComplexNumber): ComplexNumber { return input.arg().toComplex() }
 
     val functionAliases = arrayOf(
         "exp",
@@ -36,19 +54,19 @@ object Dictionaries {
         "mag",
         "arg"
     )
-    private val functions = arrayOf(
+    private val functions = arrayOf<(ComplexNumber) -> ComplexNumber>(
         ::exp,
         ::sqrt,
         ::cbrt,
-        ::nthrt,
+        this::nthrt,
         ::sinh,
         ::cosh,
         ::tanh,
         ::coth,
         ::sech,
         ::csch,
-        ::ln,
-        ::complexLog,
+        this::ln,
+        this::complexLog,
         ::floor,
         ::ceil,
         ::sin,
@@ -57,14 +75,14 @@ object Dictionaries {
         ::cot,
         ::sec,
         ::csc,
-        ::arcsin,
-        ::arccos,
-        ::arctan,
-        ::arccot,
-        ::arcsec,
-        ::arccsc,
-        ::mag,
-        ::arg
+        this::arcsin,
+        this::arccos,
+        this::arctan,
+        this::arccot,
+        this::arcsec,
+        this::arccsc,
+        this::mag,
+        this::arg
     )
 
     val functionMap = functionAliases.zip(functions).toMap()

@@ -106,12 +106,12 @@ class LibraryTest {
     @Test
     fun testExp(){
         assertEquals(
-            -1.0,
-            exp(ComplexNumber(0, PI)).toReal()
+            ComplexNumber(-1,0),
+            exp(ComplexNumber(0, PI))
         )
         assertEquals(
-            -1.0,
-            ComplexNumber(0, 1).pow(2).toReal()
+            ComplexNumber(-1,0),
+            ComplexNumber(0, 1).pow(2)
         )
     }
     /*@Test

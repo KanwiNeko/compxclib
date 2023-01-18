@@ -23,6 +23,6 @@ data class Operation (
 )
 
 data class Function(
-    val function: Any?,
+    val function: (ComplexNumber) -> ComplexNumber,
     val inside: AstMember
 )

@@ -2,11 +2,13 @@ package compxclib.functions
 
 import compxclib.*
 import kotlin.math.ln
-import kotlin.math.roundToLong
+import kotlin.math.cos
+import kotlin.math.exp
+import kotlin.math.sin
 
 // exponential functions
 fun exp(of: ComplexNumber): ComplexNumber {
-    return kotlin.math.exp(of.re()) * ComplexNumber(kotlin.math.cos(of.im()).roundToLong(), kotlin.math.sin(of.im()).roundToLong())
+    return exp(of.re()) * ComplexNumber(cos(of.im()), sin(of.im()))
 }
 
 @Suppress("unused")
