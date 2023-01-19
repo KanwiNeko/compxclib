@@ -74,13 +74,60 @@ These were some of the tools I used to build this project (except processing, th
  - [![Kotlin Logo][KotlinIMG]][Kotlin]
 
 ## Getting Started
-### Prerequisites
 ### Installation
-## Usage
 
-[![Release](https://jitpack.io/v/kanwineko/compxclib.svg?style=flat-square)](https://jitpack.io/#kanwineko/compxclib)
+<div align=center>
+<table>
+<tr><td>pom.xml</td></tr>
+<tr><td align=left>
 
+```xml
+<dependency>
+    <groupId>gay.kanwi</groupId>
+    <artifactId>compxclib</artifactId>
+    <version>v0.1-beta</version>
+</dependency>
+```
+</tr></td>
+
+<tr><td>build.gradle</td></tr>
+<tr><td align=left>
+
+```gradle
+dependencies {
+    //other dependencies...
+    implementation 'gay.kanwi:compxclib:v0.1-beta'
+}
+```
+
+</tr></td>
+
+<tr><td>build.gradle.kts</td></tr>
+<tr><td align=left>
+
+```kotlin
+dependencies {
+    //other dependencies...
+    implementation("gay.kanwi:compxclib:v0.1-beta")
+}
+```
+</tr></td>
+
+</table>
+</div>
+
+## Examples
 ## Roadmap
+
+- [X] Adding a fully functioning complex number class
+- [X] Handling typical functions such as `exp(x)` or `log(x)`
+- [ ] Handling extra functions
+    - [X] Trig functions
+    - [ ] Hyperbolic functions
+- [ ] Adding a parser
+    - [x] Parser returns values
+    - [ ] Parser returns functions
+
 ## Contributing
 ## License
 ## Contact
