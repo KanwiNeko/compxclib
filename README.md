@@ -117,6 +117,66 @@ dependencies {
 </div>
 
 ## Examples
+
+<div align=center>
+
+<table>
+    <tr>
+        <td>parsing user input to a complex number</td>
+    </tr>
+    <tr>
+        <td align=left>
+            
+```java
+import compxclib.ComplexNumber;
+import compxclib.parser.Parser;
+import java.util.Scanner;
+
+public class App{
+    private static final Scanner scanner = new Scanner(System.in);
+    private static void calculate() {
+        String input = scanner.nextLine();
+        Parser parser = new Parser(input);
+        ComplexNumber result = parser.parse();
+        System.out.println(input +" = "+ result);
+    }
+    public static void main(String[] args) {
+        System.out.println("Introduce an expression");
+        calculate();
+    }
+}
+```
+</table>
+    
+<table>
+    <tr>
+        <td>run multiple operations efficiently</td>
+    </tr>
+    <tr>
+        <td align=left>
+            
+```kotlin
+import compxclib.ComplexNumber
+import compxclib.functions.sin
+
+fun main() {
+    val (width, height) = Pair(1920, 1080)
+    val results = Array(height) { Array(width) { ComplexNumber(0,0) } }
+    for (i in 0 ..< height) {
+        for (j in 0 ..< width){
+            val currentNumber = ComplexNumber(height, width)
+            val sinOfCurrentNumber = sin(currentNumber)
+            results[i][j] = sinOfCurrentNumber
+        }
+    }
+    println(results)
+}
+
+```
+</table>
+
+</div>   
+    
 ## Roadmap
 
 - [X] Adding a fully functioning complex number class
