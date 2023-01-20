@@ -1,5 +1,4 @@
 import org.jetbrains.dokka.gradle.DokkaTask
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
@@ -24,14 +23,8 @@ plugins {
 group = 'gay.kanwi'
 version = 'v0.1-beta'
 
-sourceCompatibility = 17
-targetCompatibility = 17
-
-tasks.withType(KotlinCompilationTask).configureEach {
-    compilerOptions {
-        setTargetCompatibility(JavaVersion.VERSION_17)
-    }
-}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     // Use Maven Central for resolving dependencies.

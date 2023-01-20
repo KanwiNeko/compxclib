@@ -1,7 +1,13 @@
-package compxclib.parser
+package compxclib.parser.data
 
 import compxclib.ComplexNumber
 import compxclib.functions.*
+import compxclib.parser.parsing.AstTree
+
+/**
+ * Contains useful dictionaries for the lexing process
+ * @see compxclib.parser.lexing
+ */
 object Dictionaries {
     private fun nthrt(input: ComplexNumber): ComplexNumber {
         return nthrt(input, 1)
@@ -24,6 +30,10 @@ object Dictionaries {
     private fun mag(input: ComplexNumber): ComplexNumber { return input.mag().toComplex() }
     private fun arg(input: ComplexNumber): ComplexNumber { return input.arg().toComplex() }
 
+    /**
+     * All the library's valid functions
+     * @since Version 1.0
+     */
     val functionAliases = arrayOf(
         "exp",
         "sqrt",
@@ -54,6 +64,12 @@ object Dictionaries {
         "mag",
         "arg"
     )
+
+    /**
+     * All the library's valid functions that are usable within the parse
+     * @since Version 1.0
+     * @see compxclib.parser
+     */
     private val functions = arrayOf<(ComplexNumber) -> ComplexNumber>(
         ::exp,
         ::sqrt,
@@ -85,6 +101,11 @@ object Dictionaries {
         this::arg
     )
 
+    /**
+     * Dictionary used in the [AstTree] class to eventually evaluate an expression
+     * @since Version 1.0
+     * @see compxclib.parser.parsing
+     */
     val functionMap = functionAliases.zip(functions).toMap()
 
 }

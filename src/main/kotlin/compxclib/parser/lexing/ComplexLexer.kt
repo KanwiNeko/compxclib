@@ -1,7 +1,26 @@
-package compxclib.parser
+package compxclib.parser.lexing
 
 import compxclib.ComplexNumber
+import compxclib.parser.data.ComplexList
+import compxclib.parser.data.MutableComplexList
+import compxclib.parser.data.TokenTuple
+import compxclib.parser.data.Tokens
+import compxclib.parser.parsing.AstTree
 
+/**
+ * Tokenizing class with a single public main method, the purpose of this class is to
+ * **receive, modify and return** data from the [NumberLexer] class; it is the last step in the
+ * tokenization process
+ *
+ * The values returned by this class are designed to be passed to the [AstTree] class constructor
+ * @param complexList List of Pairs containing [Tokens] and a [String] value
+ * @since Version 1.0
+ * @see ComplexNumber
+ * @see Tokens
+ * @see AstTree
+ * @see NumberLexer
+ * @see String
+ */
 class ComplexLexer(private val complexList: ComplexList) {
 
     // static variables used for checking
@@ -84,6 +103,17 @@ class ComplexLexer(private val complexList: ComplexList) {
         return removedIndexes.size
     }
 
+    /**
+     * **Only** public method of the class, evaluates a [ComplexList] to convert the
+     * [Tokens.REAL_NUMBER] and [Tokens.IMAGINARY_NUMBER] values into [Tokens.COMPLEX_NUMBER] values.
+     *
+     * the returned value *should* be passed to the [AstTree] class constructor
+     * @return a [ComplexList] with [Tokens.COMPLEX_NUMBER] values instead of [Tokens.REAL_NUMBER] and [Tokens.IMAGINARY_NUMBER]
+     * @since Version 1.0
+     * @see Tokens
+     * @see ComplexList
+     * @see AstTree
+     */
     fun complexLexer(): Pair<ComplexList, List<ComplexNumber>> {
         // Assignments
         val returnedList: MutableComplexList = mutableListOf()

@@ -1,11 +1,22 @@
-package compxclib.parser
+package compxclib.parser.lexing
 
 import compxclib.enums.Sign
+import compxclib.parser.data.ComplexList
+import compxclib.parser.data.MutableComplexList
+import compxclib.parser.data.TokenTuple
+import compxclib.parser.data.Tokens
 
-typealias TokenTuple = Pair<Tokens, String>
-typealias ComplexList = List<TokenTuple>
-typealias MutableComplexList = MutableList<TokenTuple>
-
+/**
+ * Tokenizing class with a single public main method, the purpose of this class is to
+ * **receive, modify and return data from the** [Lexer] class; it is the middle in the tokenization process
+ *
+ * The values returned by this class are designed to be passed to the [ComplexLexer] class constructor
+ * @param tokens a [ComplexList]
+ * @since Version 1.0
+ * @see [Lexer]
+ * @see [NumberLexer]
+ * @see [ComplexList]
+ */
 class NumberLexer(tokens: ComplexList) {
     private var tokenList: MutableComplexList? = null
     private var returnedList: MutableComplexList = mutableListOf()
@@ -73,6 +84,18 @@ class NumberLexer(tokens: ComplexList) {
         }
     }
 
+    /**
+     * **Only** public method of the class, evaluates a [ComplexList] to convert the
+     * [Tokens.IMAGINARY_UNIT] and [Tokens.NUMBER] values into [Tokens.REAL_NUMBER] and
+     * [Tokens.IMAGINARY_NUMBER] values.
+     *
+     * the returned value *should* be passed to the [ComplexLexer] class constructor
+     * @return a [ComplexList] with [Tokens.REAL_NUMBER] and [Tokens.IMAGINARY_NUMBER] values instead of [Tokens.NUMBER] and [Tokens.IMAGINARY_UNIT]
+     * @since Version 1.0
+     * @see Tokens
+     * @see ComplexList
+     * @see ComplexLexer
+     */
     fun numberLexer(): ComplexList {
         while (tokenList!!.isNotEmpty()) {
             if (at().first in skipTypes) {

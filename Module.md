@@ -25,4 +25,16 @@ Contains all the **operator overloads** of the [Number] class to let it perform 
 
 # Package  compxclib.parser
 
-Contains all the classes used by the main [Parser] class
+Contains all the classes, functions, and data used by the main [Parser] class
+
+# Package  compxclib.parser.data
+
+Contains classes, values and enums used inside [compxclib.parser.parsing] and [compxclib.parser.lexing]
+
+# Package  compxclib.parser.lexing
+
+Contains all the classes and logic used for lexing an expression
+
+# Package  compxclib.parser.parsing
+
+Contains all the classes and logic used for parsing and evaluating an expression

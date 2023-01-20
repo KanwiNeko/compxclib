@@ -1,10 +1,28 @@
-package compxclib.parser
+@file:Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+
+package compxclib.parser.lexing
 
 import compxclib.Constants
 import compxclib.exceptions.InvalidToken
-import java.lang.Double.parseDouble
+import compxclib.parser.data.ComplexList
+import compxclib.parser.data.Dictionaries
+import compxclib.parser.data.MutableComplexList
+import compxclib.parser.data.Tokens
+import java.lang.Double
 
-class Lexer(val input: String) {
+/**
+ * Tokenizing class with a single public main method, the purpose of this class is to
+ * **receive, modify and return** data from the user as a [String];
+ * it is the first in the tokenization process
+ *
+ * The values returned by this class are designed to be passed to the [NumberLexer] class constructor
+ * @param input a [String]
+ * @since Version 1.0
+ * @see [NumberLexer]
+ * @see [ComplexLexer]
+ * @see [ComplexList]
+ */
+class Lexer(private val input: String) {
 
     private var stream = ""
     private var cursor = 0
@@ -16,13 +34,28 @@ class Lexer(val input: String) {
     private fun isNumeric(str: String): Boolean {
         var result = true
         try {
-            parseDouble(str)
+            Double.parseDouble(str)
         } catch (e: NumberFormatException) {
             result = false
         }
         return result
     }
 
+    /**
+     * **Only** public method of the class, evaluates a [String] to convert the
+     * [Char] values into [Tokens] values
+     *
+     * the returned value *should* be passed to the [NumberLexer] class constructor
+     * @return a [ComplexList]
+     * @since Version 1.0
+     * @see Tokens
+     * @see ComplexList
+     * @see ComplexLexer
+     * @see Lexer
+     * @see NumberLexer
+     * @see String
+     * @see Char
+     */
     fun tokenize(): ComplexList {
         val tokens: MutableComplexList = mutableListOf()
 

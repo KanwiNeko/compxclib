@@ -1,10 +1,29 @@
-package compxclib.parser
+package compxclib.parser.parsing
 
 import compxclib.ComplexNumber
 import compxclib.exceptions.InvalidToken
 import compxclib.enums.Operator
+import compxclib.parser.data.ComplexList
+import compxclib.parser.data.Dictionaries
+import compxclib.parser.data.TokenTuple
+import compxclib.parser.data.Tokens
+import compxclib.parser.lexing.ComplexLexer
 import kotlin.properties.Delegates
 
+/**
+ * This class is made to **modify, store, return and *Parse*** values provided by the
+ * [ComplexLexer.complexLexer] method, it has an only main and public method that will return a
+ * parsed token list to a Tree of [AstMember] instances
+ *
+ * The values of this class are designed to be passed to the [Evaluator] class constructor
+ * @param tks A list of Pair tokens provided by [ComplexLexer.complexLexer]
+ * @param numbers A list of [ComplexNumber] instances provided by [ComplexLexer.complexLexer]
+ * @since Version 1.0
+ * @see [ComplexLexer]
+ * @see [AstMember]
+ * @see [ComplexNumber]
+ * @see [Tokens]
+ * */
 class AstTree(tks: ComplexList, private val numbers: List<ComplexNumber>) {
     // Declarations
     private var tokens: ComplexList = listOf()
@@ -63,7 +82,8 @@ class AstTree(tks: ComplexList, private val numbers: List<ComplexNumber>) {
                 leftHandSide,
                 operator,
                 rhs
-            ))
+            )
+            )
         }
 
         return leftHandSide
@@ -86,7 +106,8 @@ class AstTree(tks: ComplexList, private val numbers: List<ComplexNumber>) {
                 leftHandSide,
                 operator,
                 rhs
-            ))
+            )
+            )
         }
 
         return leftHandSide
@@ -105,7 +126,8 @@ class AstTree(tks: ComplexList, private val numbers: List<ComplexNumber>) {
                 leftHandSide,
                 operator,
                 rhs
-            ))
+            )
+            )
         }
 
         return leftHandSide
@@ -142,6 +164,18 @@ class AstTree(tks: ComplexList, private val numbers: List<ComplexNumber>) {
         }
     }
 
+    /**
+     * **Only** public method of the class, starts a series of method calls
+     * that will end in an [AstMember] Tree.
+     *
+     * the purpose of the result is to eventually evaluate the returned value
+     * in the [Evaluator] class
+     * @return A tree made of [AstMember] instances
+     * @since Version 1.0
+     * @see [Evaluator]
+     * @see [AstTree]
+     * @se [AstMember]
+     */
     fun parse(): AstMember {
         return parseExpression()
     }

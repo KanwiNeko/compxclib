@@ -1,9 +1,27 @@
-package compxclib.parser
+package compxclib.parser.parsing
 
 import compxclib.ComplexNumber
 import compxclib.enums.Operator
+import compxclib.parser.data.AstTypes
 
+/**
+ * This class represents the very last step in the parsing process, it receives in its
+ * constructor an [AstMember] Tree, and it evaluates it its only public main method.
+ * @param input the [AstMember] Tree
+ * @since Version 1.0
+ * @see AstMember
+ * @see compxclib.parser.lexing
+ */
 class Evaluator(private val input: AstMember) {
+
+    /**
+     * **Only** public method of the class, evaluates an [AstMember] Tree and returns
+     * a [ComplexNumber] value
+     * @return a parsed [ComplexNumber]
+     * @since Version 1.0
+     * @see compxclib.parser.lexing
+     * @see AstMember
+     */
     fun evaluate(): ComplexNumber {
         val evaluatedExpression = evaluateExpression(this.input)
         return evaluateNumericLiteral(evaluatedExpression)
