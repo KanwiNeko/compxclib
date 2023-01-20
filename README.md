@@ -9,7 +9,7 @@ Complex Complete Library
 
 A complete library for all of your <b>complex</b> needs!
 
-<a href="https://github.com/KanwiNeko/compxclib/wiki">Docs →</a>
+<a href="https://docs.kanwi.gay/">Docs →</a>
 <br/>
 
 [![contributors][Contributors]][Contributors-url]
