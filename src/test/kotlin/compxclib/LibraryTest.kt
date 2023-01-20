@@ -3,6 +3,10 @@ package compxclib
 import kotlin.math.*
 import kotlin.test.*
 import compxclib.functions.*
+import compxclib.operators.div
+import compxclib.operators.minus
+import compxclib.operators.plus
+import compxclib.operators.times
 
 class LibraryTest {
     @Test

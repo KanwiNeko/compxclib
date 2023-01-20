@@ -1,12 +1,27 @@
 package compxclib
 
+import compxclib.enums.SqrtBranch
 import kotlin.test.*
 import kotlin.math.cosh
 import compxclib.functions.*
+import compxclib.operators.times
 
 class FunctionTest {
 
     private val i = Constants.i()
+
+
+    @Test
+    fun powerOperatorTest() {
+        assertEquals(
+            ComplexNumber(9, 8).pow(ComplexNumber(1, 6)),
+            ComplexNumber(9, 8) pow ComplexNumber(1, 6)
+        )
+        assertEquals(
+            ComplexNumber(9, 8).pow(6),
+            ComplexNumber(9, 8) pow 6
+        )
+    }
 
     @Test
     fun lnTest() {

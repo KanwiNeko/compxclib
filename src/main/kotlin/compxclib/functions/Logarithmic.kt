@@ -1,6 +1,7 @@
 package compxclib.functions
 
 import compxclib.*
+import compxclib.operators.plus
 import kotlin.math.*
 
 // complex logarithms

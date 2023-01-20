@@ -1,7 +1,7 @@
 package compxclib.parser
 
 import compxclib.ComplexNumber
-import compxclib.Operator
+import compxclib.enums.Operator
 
 data class NumericLiteral(
     override val type: AstTypes = AstTypes.NUMERIC_LITERAL,

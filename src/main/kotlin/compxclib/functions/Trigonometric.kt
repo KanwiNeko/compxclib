@@ -1,6 +1,10 @@
 package compxclib.functions
 
 import compxclib.*
+import compxclib.enums.SqrtBranch
+import compxclib.operators.div
+import compxclib.operators.minus
+import compxclib.operators.plus
 import kotlin.math.PI
 
 // trigonometric functions

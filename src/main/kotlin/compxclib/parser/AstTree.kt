@@ -1,8 +1,8 @@
 package compxclib.parser
 
 import compxclib.ComplexNumber
-import compxclib.InvalidToken
-import compxclib.Operator
+import compxclib.exceptions.InvalidToken
+import compxclib.enums.Operator
 import kotlin.properties.Delegates
 
 class AstTree(tks: ComplexList, private val numbers: List<ComplexNumber>) {

@@ -1,6 +1,9 @@
+import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    id 'org.jetbrains.kotlin.jvm' version '1.6.21'
+    id 'org.jetbrains.kotlin.jvm' version '1.8.0'
 
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
@@ -13,13 +16,22 @@ plugins {
 
     // singing for gpg keys
     id 'signing'
+
+    // Documentation generator
+    id 'org.jetbrains.dokka' version '1.7.20'
 }
 
 group = 'gay.kanwi'
 version = 'v0.1-beta'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 17
+targetCompatibility = 17
+
+tasks.withType(KotlinCompilationTask).configureEach {
+    compilerOptions {
+        setTargetCompatibility(JavaVersion.VERSION_17)
+    }
+}
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -32,7 +44,7 @@ dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
 
     // Use the Kotlin JDK 8 standard library.
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
 
     //kotlin reflection library
     implementation 'org.jetbrains.kotlin:kotlin-reflect:1.4.31'
@@ -111,4 +123,49 @@ wrapper {
 
 signing {
     sign publishing.publications.mavenJava
+}
+
+tasks.register('dokkaHtmlJar', Jar.class) {
+    dependsOn(dokkaHtml)
+    from(dokkaHtml)
+    archiveClassifier.set("html-docs")
+}
+
+tasks.register('dokkaJavadocJar', Jar.class) {
+    dependsOn(dokkaJavadoc)
+    from(dokkaJavadoc)
+    archiveClassifier.set("javadoc")
+}
+
+tasks.withType(DokkaTask.class).configureEach {
+    moduleName.set(project.name)
+    println("Configuring ${moduleName}")
+    moduleVersion.set(project.version.toString())
+    outputDirectory.set(file("build/dokka/$name"))
+    failOnWarning.set(false)
+    suppressObviousFunctions.set(true)
+    suppressInheritedMembers.set(false)
+    offlineMode.set(false)
+    dokkaSourceSets.configureEach {
+        displayName.set(name)
+        suppress.set(displayName.get() != "main")
+        reportUndocumented.set(false)
+        skipEmptyPackages.set(true)
+        skipDeprecated.set(false)
+        suppressGeneratedFiles.set(true)
+        jdkVersion.set(11)
+        languageVersion.set("1.8")
+        apiVersion.set("1.8")
+        noStdlibLink.set(false)
+        noJdkLink.set(false)
+        noAndroidSdkLink.set(false)
+        includes.from(project.files(), "Module.md")
+        sourceRoots.from(file("src/main/kotlin"))
+        samples.from(project.files(), "src/samples/kotlin/Basic.kt")
+        sourceLink {
+            localDirectory.set(file("src/main/kotlin"))
+            remoteUrl.set(new URL("https://github.com/KatieUmbra/compxclib/tree/main/src/main/kotlin"))
+            remoteLineSuffix.set("#L")
+        }
+    }
 }

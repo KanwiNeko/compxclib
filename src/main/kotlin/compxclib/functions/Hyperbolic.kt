@@ -1,7 +1,7 @@
 package compxclib.functions
 
 import compxclib.ComplexNumber
-import compxclib.div
+import compxclib.operators.div
 
 // sinix = i*sinh(x)
 // -i * sin(iz) = sinh(z)

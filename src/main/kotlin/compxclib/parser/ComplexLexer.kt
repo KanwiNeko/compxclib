@@ -2,7 +2,7 @@ package compxclib.parser
 
 import compxclib.ComplexNumber
 
-class ComplexLexer(val complexList: ComplexList) {
+class ComplexLexer(private val complexList: ComplexList) {
 
     // static variables used for checking
     private val leftParenthesisToken = Pair(Tokens.STRUCTURE, "(")
@@ -18,6 +18,7 @@ class ComplexLexer(val complexList: ComplexList) {
     private var index = 0
 
     // parses a string into a double
+    @OptIn(ExperimentalStdlibApi::class)
     private fun parseDouble(input: String): Double {
         val sign: Double = when(input[0]) {
             '+' -> 1.0
@@ -25,7 +26,7 @@ class ComplexLexer(val complexList: ComplexList) {
             else -> 0.0
         }
         val number: Double = input
-            .removeRange(0 until 1)
+            .removeRange(0 ..< 1)
             .toDouble()
         return number * sign
     }
@@ -60,9 +61,10 @@ class ComplexLexer(val complexList: ComplexList) {
     }
 
     // deletes stray operators; ex: ln(4+) -> ln(4) or sin(+2) -> sin(2) or +4 -> 4
+    @OptIn(ExperimentalStdlibApi::class)
     private fun cleanTokenList(): Int {
         val removedIndexes = mutableListOf<Int>()
-        for ((i, v) in tokenList.zip(0 until tokenList.size)) {
+        for ((i, v) in tokenList.zip(0 ..< tokenList.size)) {
             val (leftNeighbor, rightNeighbor) = neighbors(v)
             if (i.first != Tokens.OPERATOR) continue
             if (leftNeighbor == leftParenthesisToken || leftNeighbor == null) {

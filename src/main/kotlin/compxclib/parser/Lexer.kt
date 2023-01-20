@@ -1,7 +1,7 @@
 package compxclib.parser
 
 import compxclib.Constants
-import compxclib.InvalidToken
+import compxclib.exceptions.InvalidToken
 import java.lang.Double.parseDouble
 
 class Lexer(val input: String) {

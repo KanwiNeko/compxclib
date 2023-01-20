@@ -1,7 +1,6 @@
 package compxclib.parser
 
-import compxclib.NumberLexerNotInitialized
-import compxclib.Sign
+import compxclib.enums.Sign
 
 typealias TokenTuple = Pair<Tokens, String>
 typealias ComplexList = List<TokenTuple>
@@ -75,7 +74,6 @@ class NumberLexer(tokens: ComplexList) {
     }
 
     fun numberLexer(): ComplexList {
-        if (tokenList.isNullOrEmpty()) throw NumberLexerNotInitialized("Call NumberLexer.init(your token list) before using this!")
         while (tokenList!!.isNotEmpty()) {
             if (at().first in skipTypes) {
                 returnedList += eatToken()

@@ -1,8 +1,7 @@
 package compxclib.parser
 
 import compxclib.ComplexNumber
-import compxclib.Operator
-import compxclib.functions.pow
+import compxclib.enums.Operator
 
 class Evaluator(private val input: AstMember) {
     fun evaluate(): ComplexNumber {

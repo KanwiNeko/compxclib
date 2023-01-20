@@ -76,6 +76,7 @@ These were some of the tools I used to build this project (except processing, th
 ## Getting Started
 ### Installation
 
+<details> <summary>Maven</summary>
 <div align=center>
 <table>
 <tr><td>pom.xml</td></tr>
@@ -88,8 +89,13 @@ These were some of the tools I used to build this project (except processing, th
     <version>v0.1-beta</version>
 </dependency>
 ```
-</tr></td>
+</tr>
+</table></div>
+</details>
 
+<details> <summary>Gradle</summary>
+<div align=center>
+<table>
 <tr><td>build.gradle</td></tr>
 <tr><td align=left>
 
@@ -100,8 +106,13 @@ dependencies {
 }
 ```
 
-</tr></td>
+</tr>
+</table></div>
+</details>
 
+<details> <summary>Gradle kotlin</summary>
+<div align=center>
+<table>
 <tr><td>build.gradle.kts</td></tr>
 <tr><td align=left>
 
@@ -111,10 +122,8 @@ dependencies {
     implementation("gay.kanwi:compxclib:v0.1-beta")
 }
 ```
-</tr></td>
-
-</table>
-</div>
+</tr></table></div>
+</details>
 
 ## Examples
 
@@ -187,11 +196,35 @@ fun main() {
 - [ ] Adding a parser
     - [x] Parser returns values
     - [ ] Parser returns functions
+- [ ] Examples inside the documentation
 
 ## Contributing
+
+Contributing is what makes open source projects so magical and it unites the community.
+if you want to suggest a feature then you could either
+- Create a new issue with the "Suggestion tag"
+- Create a pull request:
+  1. Fork the Project
+  2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+  3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+  4. Push to the Branch (`git push origin feature/AmazingFeature`)
+  5. Open a Pull Request
+
+
+
 ## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
 ## Contact
+
+You can contact me with the name "Katherine" 
+- Email: `business@kanwi.gay`
+- Repo: `https://github.com/KatieUmbra/compxclib`
 ## Acknowledgements
+
+- [This readme is heavily inspired on this][README-inspiration]
+- [Processing framework used for the images][Processing]
 
 <!-- LINKS AND IMAGES -->
 
