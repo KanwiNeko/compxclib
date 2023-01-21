@@ -58,6 +58,14 @@ A complete library for all of your <b>complex</b> needs!
 CompxCLib is a library targeted at everyone that needs to work with complex numbers in a straightforward and elegant manner, utilizing the features of the Kotlin language to make it accessible and simple.
 
 *but why not use one of the many libraries out there?* compxclib has unique features that make using complex numbers a *breeze*.
+
+Here are some of the unique features that **Compxclib** has:
+
+- Main intuitive complex number class, with plenty of operator extensions and `infix pow` function (kotlin exclusive)
+- Number operator extensions
+- Trig, exp, and other kinds of operations that are well optimized
+- An **expression parser** to quickly evaluate mathematical expressions that use complex numbers.
+ 
 ### Inspiration
 The reason I started working on this library was that I'm in love with complex algebra and I wanted to have a simple-to-use tool in order to create interesting and aesthetically pleasing simulations.
 ### Tools used

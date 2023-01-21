@@ -20,7 +20,7 @@ plugins {
     id 'org.jetbrains.dokka' version '1.7.20'
 }
 
-String v = 'v0.3-beta'
+String v = 'v1.0'
 
 group = 'gay.kanwi'
 version = v
@@ -103,7 +103,7 @@ tasks.withType(DokkaTask.class).configureEach {
 
 java {
 
-    //withSourcesJar()
+    withSourcesJar()
     withJavadocJar()
 }
 
