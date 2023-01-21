@@ -86,7 +86,7 @@ These were some of the tools I used to build this project (except processing, th
 <dependency>
     <groupId>gay.kanwi</groupId>
     <artifactId>compxclib</artifactId>
-    <version>v0.1-beta</version>
+    <version>v0.2-beta</version>
 </dependency>
 ```
 </tr>
@@ -102,7 +102,7 @@ These were some of the tools I used to build this project (except processing, th
 ```gradle
 dependencies {
     //other dependencies...
-    implementation 'gay.kanwi:compxclib:v0.1-beta'
+    implementation 'gay.kanwi:compxclib:v0.2-beta'
 }
 ```
 
@@ -119,7 +119,7 @@ dependencies {
 ```kotlin
 dependencies {
     //other dependencies...
-    implementation("gay.kanwi:compxclib:v0.1-beta")
+    implementation("gay.kanwi:compxclib:v0.2-beta")
 }
 ```
 </tr></table></div>
