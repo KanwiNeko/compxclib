@@ -29,11 +29,7 @@ A complete library for all of your <b>complex</b> needs!
                     <li><a href="#Inspiration">Inspiration</a></li>
                     <li><a href="#Tools used">Tools used</a></li>
                 </ul>
-            <li><a href="#Getting Started">Getting Started</a></li>
-                <ul>
-                    <li><a href="#Prerequisites">Prerequisites</a></li>
-                    <li><a href="#Installation">Installation</a></li>
-                </ul>
+            <li><a href="#Installation">Installation</a></li>
             <li><a href="#Usage">Usage</a></li>
             <li><a href="#Roadmap">Roadmap</a></li>
             <li><a href="#Contributing">Contributing</a></li>
