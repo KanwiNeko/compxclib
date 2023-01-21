@@ -37,11 +37,17 @@ $dokka.location:compxclib.exceptions/InvalidToken///PointingToDeclaration/compx
 $dokka.location:compxclib.exceptions/InvalidToken/InvalidToken/#kotlin.String/PointingToDeclaration/compxclib/compxclib.exceptions/-invalid-token/-invalid-token.html
 $dokka.location:compxclib.functions////PointingToDeclaration/compxclib/compxclib.functions/index.html
 $dokka.location:compxclib.functions//arccos/#compxclib.ComplexNumber#compxclib.enums.SqrtBranch#kotlin.Int/PointingToDeclaration/compxclib/compxclib.functions/arccos.html
+$dokka.location:compxclib.functions//arccosh/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/arccosh.html
 $dokka.location:compxclib.functions//arccot/#compxclib.ComplexNumber#kotlin.Int/PointingToDeclaration/compxclib/compxclib.functions/arccot.html
+$dokka.location:compxclib.functions//arccoth/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/arccoth.html
 $dokka.location:compxclib.functions//arccsc/#compxclib.ComplexNumber#compxclib.enums.SqrtBranch#kotlin.Int/PointingToDeclaration/compxclib/compxclib.functions/arccsc.html
+$dokka.location:compxclib.functions//arccsch/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/arccsch.html
 $dokka.location:compxclib.functions//arcsec/#compxclib.ComplexNumber#compxclib.enums.SqrtBranch#kotlin.Int/PointingToDeclaration/compxclib/compxclib.functions/arcsec.html
+$dokka.location:compxclib.functions//arcsech/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/arcsech.html
 $dokka.location:compxclib.functions//arcsin/#compxclib.ComplexNumber#compxclib.enums.SqrtBranch#kotlin.Int/PointingToDeclaration/compxclib/compxclib.functions/arcsin.html
+$dokka.location:compxclib.functions//arcsinh/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/arcsinh.html
 $dokka.location:compxclib.functions//arctan/#compxclib.ComplexNumber#kotlin.Int/PointingToDeclaration/compxclib/compxclib.functions/arctan.html
+$dokka.location:compxclib.functions//arctanh/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/arctanh.html
 $dokka.location:compxclib.functions//arg/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/arg.html
 $dokka.location:compxclib.functions//cbrt/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/cbrt.html
 $dokka.location:compxclib.functions//ceil/#compxclib.ComplexNumber/PointingToDeclaration/compxclib/compxclib.functions/ceil.html

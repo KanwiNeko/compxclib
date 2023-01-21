@@ -20,8 +20,10 @@ plugins {
     id 'org.jetbrains.dokka' version '1.7.20'
 }
 
+String v = 'v0.3-beta'
+
 group = 'gay.kanwi'
-version = 'v0.1-beta'
+version = v
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -55,8 +57,53 @@ dependencies {
     api 'org.apache.commons:commons-math3:3.6.1'
 }
 
+wrapper {
+    gradleVersion = "7.3.3"
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+tasks.register('javadocJar', Jar.class) {
+    dependsOn(dokkaJavadoc)
+    from(dokkaJavadoc)
+    archiveClassifier.set("javadoc")
+}
+
+tasks.withType(DokkaTask.class).configureEach {
+    moduleName.set(project.name)
+    println("Configuring ${moduleName}")
+    moduleVersion.set(project.version.toString())
+    outputDirectory.set(file("build/dokka/$name"))
+    failOnWarning.set(false)
+    suppressObviousFunctions.set(true)
+    suppressInheritedMembers.set(false)
+    offlineMode.set(false)
+    dokkaSourceSets.configureEach {
+        displayName.set(name)
+        suppress.set(displayName.get() != "main")
+        reportUndocumented.set(false)
+        skipEmptyPackages.set(true)
+        skipDeprecated.set(false)
+        suppressGeneratedFiles.set(true)
+        jdkVersion.set(8)
+        languageVersion.set("1.8")
+        apiVersion.set("1.8")
+        noStdlibLink.set(false)
+        noJdkLink.set(false)
+        noAndroidSdkLink.set(false)
+        includes.from(project.files(), "Module.md")
+        sourceRoots.from(file("src/main/kotlin"))
+        samples.from(project.files(), "src/samples/kotlin/Basic.kt")
+        sourceLink {
+            localDirectory.set(file("src/main/kotlin"))
+            remoteUrl.set(new URL("https://github.com/KatieUmbra/compxclib/tree/main/src/main/kotlin"))
+            remoteLineSuffix.set("#L")
+        }
+    }
+}
+
 java {
-    withSourcesJar()
+
+    //withSourcesJar()
     withJavadocJar()
 }
 
@@ -65,7 +112,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'gay.kanwi'
             artifactId = 'compxclib'
-            version = 'v0.1-beta'
+            version = v
 
             from components.java
 
@@ -109,56 +156,6 @@ publishing {
     }
 }
 
-wrapper {
-    gradleVersion = "7.3.3"
-    distributionType = Wrapper.DistributionType.ALL
-}
-
 signing {
     sign publishing.publications.mavenJava
-}
-
-tasks.register('dokkaHtmlJar', Jar.class) {
-    dependsOn(dokkaHtml)
-    from(dokkaHtml)
-    archiveClassifier.set("html-docs")
-}
-
-tasks.register('dokkaJavadocJar', Jar.class) {
-    dependsOn(dokkaJavadoc)
-    from(dokkaJavadoc)
-    archiveClassifier.set("javadoc")
-}
-
-tasks.withType(DokkaTask.class).configureEach {
-    moduleName.set(project.name)
-    println("Configuring ${moduleName}")
-    moduleVersion.set(project.version.toString())
-    outputDirectory.set(file("build/dokka/$name"))
-    failOnWarning.set(false)
-    suppressObviousFunctions.set(true)
-    suppressInheritedMembers.set(false)
-    offlineMode.set(false)
-    dokkaSourceSets.configureEach {
-        displayName.set(name)
-        suppress.set(displayName.get() != "main")
-        reportUndocumented.set(false)
-        skipEmptyPackages.set(true)
-        skipDeprecated.set(false)
-        suppressGeneratedFiles.set(true)
-        jdkVersion.set(11)
-        languageVersion.set("1.8")
-        apiVersion.set("1.8")
-        noStdlibLink.set(false)
-        noJdkLink.set(false)
-        noAndroidSdkLink.set(false)
-        includes.from(project.files(), "Module.md")
-        sourceRoots.from(file("src/main/kotlin"))
-        samples.from(project.files(), "src/samples/kotlin/Basic.kt")
-        sourceLink {
-            localDirectory.set(file("src/main/kotlin"))
-            remoteUrl.set(new URL("https://github.com/KatieUmbra/compxclib/tree/main/src/main/kotlin"))
-            remoteLineSuffix.set("#L")
-        }
-    }
 }

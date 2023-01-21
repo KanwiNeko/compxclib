@@ -1,10 +1,7 @@
 package compxclib.functions
 
 import compxclib.ComplexNumber
-import compxclib.operators.div
-
-// sinix = i*sinh(x)
-// -i * sin(iz) = sinh(z)
+import compxclib.operators.*
 
 /**
  * Sinh or Hyperbolic Sine of a [ComplexNumber]
@@ -82,4 +79,92 @@ fun sech(of: ComplexNumber): ComplexNumber {
 @Suppress("unused")
 fun csch(of: ComplexNumber): ComplexNumber {
     return 1 / sinh(of)
+}
+
+// ----------------------------------------------
+// Inverse hyperbolic functions
+// ----------------------------------------------
+
+/**
+ * arcsinh or Arc-Hyperbolic Sine of a [ComplexNumber].
+ *
+ * Arcsinh(z) is defined as ln(z + sqrt( z^2 - 1 ))
+ * @param of, A [ComplexNumber]
+ * @return arcsinh([ComplexNumber])
+ * @since Version 1.0
+ * @see sinh
+ */
+@Suppress("unused")
+fun arcsinh(of: ComplexNumber): ComplexNumber {
+    return ln(of + sqrt((of pow 2) + 1 ))
+}
+
+/**
+ * arccosh or Arc-Hyperbolic Cosine of a [ComplexNumber].
+ *
+ * Arccosh(z) is defined as ln(z + sqrt( z^2 - 1 ))
+ * @param of, A [ComplexNumber]
+ * @return arccosh([ComplexNumber])
+ * @since Version 1.0
+ * @see cosh
+ */
+@Suppress("unused")
+fun arccosh(of: ComplexNumber): ComplexNumber {
+    return ln(of + sqrt((of pow 2) - 1 ))
+}
+
+/**
+ * arctanH or Arc-Hyperbolic Tangent of a [ComplexNumber].
+ *
+ * Arctanh(z) is defined as 1/2 * ln( (1 + z) / (1 - z) )
+ * @param of, A [ComplexNumber]
+ * @return arctanh([ComplexNumber])
+ * @since Version 1.0
+ * @see tanh
+ */
+@Suppress("unused")
+fun arctanh(of: ComplexNumber): ComplexNumber {
+    return 0.5 * ln((1 + of) / (1 - of) )
+}
+
+/**
+ * arccotH or Arc-Hyperbolic Cotangent of a [ComplexNumber].
+ *
+ * Arccoth(z) is defined as 1/2 * ln( (z + 1) / (z - 1) )
+ * @param of, A [ComplexNumber]
+ * @return arccosh([ComplexNumber])
+ * @since Version 1.0
+ * @see tanh
+ */
+@Suppress("unused")
+fun arccoth(of: ComplexNumber): ComplexNumber {
+    return 0.5 * ln((of + 1) / (of - 1) )
+}
+
+/**
+ * arcsech or Arc-Hyperbolic Secant of a [ComplexNumber].
+ *
+ * Arcsech(z) is defined as ln( (1 + sqrt( 1 - z^2 )/z )
+ * @param of, A [ComplexNumber]
+ * @return arcsech([ComplexNumber])
+ * @since Version 1.0
+ * @see cosh
+ */
+@Suppress("unused")
+fun arcsech(of: ComplexNumber): ComplexNumber {
+    return arccosh(1/of)
+}
+
+/**
+ * arccsch or Arc-Hyperbolic Cosecante of a [ComplexNumber].
+ *
+ * Arccsch(z) is defined as ln( (1 + sqrt( 1 + z^2 )/z )
+ * @param of, A [ComplexNumber]
+ * @return arccsch([ComplexNumber])
+ * @since Version 1.0
+ * @see cosh
+ */
+@Suppress("unused")
+fun arccsch(of: ComplexNumber): ComplexNumber {
+    return arcsinh(1/of)
 }
