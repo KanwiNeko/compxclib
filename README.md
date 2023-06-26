@@ -196,6 +196,7 @@ fun main() {
 
 - [X] Adding a fully functioning complex number class
 - [X] Handling typical functions such as `exp(x)` or `log(x)`
+- [ ] Refractor codebase and optimize
 - [ ] Handling extra functions
     - [X] Trig functions
     - [ ] Hyperbolic functions
@@ -225,7 +226,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 You can contact me with the name "Katherine" 
-- Email: `business@kanwi.gay`
+- Email: `katherine@kaytea.dev`
 - Repo: `https://github.com/KatieUmbra/compxclib`
 ## Acknowledgements
 
@@ -240,7 +241,7 @@ You can contact me with the name "Katherine"
 [Issues]: https://img.shields.io/github/issues/kanwineko/compxclib?style=for-the-badge
 [License]: https://img.shields.io/github/license/kanwineko/compxclib?style=for-the-badge
 [PullRequests]: https://img.shields.io/github/issues-pr/kanwineko/compxclib?style=for-the-badge
-[MavenCentral]: https://img.shields.io/maven-central/v/gay.kanwi/compxclib?style=for-the-badge
+[MavenCentral]: https://img.shields.io/maven-central/v/dev.kanwi/compxclib?style=for-the-badge
 
 [Contributors-url]: https://github.com/KanwiNeko/compxclib/graphs/contributors
 [Forks-url]: https://github.com/KanwiNeko/compxclib/network/members
@@ -248,7 +249,7 @@ You can contact me with the name "Katherine"
 [Issues-url]: https://github.com/KanwiNeko/compxclib/issues
 [License-url]: https://mit-license.org/
 [PullRequests-url]: https://github.com/KanwiNeko/compxclib/pulls
-[MavenCentral-url]: https://repo1.maven.org/maven2/gay/kanwi/compxclib/
+[MavenCentral-url]: https://repo1.maven.org/maven2/dev/kaytea/compxclib/
 
 [README-inspiration]: https://github.com/othneildrew/Best-README-Template
 [Gradle]: https://gradle.org/
