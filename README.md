@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <div id="top"></div>
 
 <div align=center>
@@ -9,7 +10,6 @@ Complex Complete Library
 
 A complete library for all of your <b>complex</b> needs!
 
-<a href="https://docs.kanwi.gay/">Docs →</a>
 <br/>
 
 [![contributors][Contributors]][Contributors-url]
@@ -43,7 +43,6 @@ A complete library for all of your <b>complex</b> needs!
 
 ## About
 
-
 <div align="center">
 
 
@@ -65,17 +64,17 @@ Here are some of the unique features that **Compxclib** has:
 - Number operator extensions
 - Trig, exp, and other kinds of operations that are well optimized
 - An **expression parser** to quickly evaluate mathematical expressions that use complex numbers.
- 
+
 ### Inspiration
 The reason I started working on this library was that I'm in love with complex algebra and I wanted to have a simple-to-use tool in order to create interesting and aesthetically pleasing simulations.
 ### Tools used
 These were some of the tools I used to build this project (except processing, that was used to make the graphics in this document)
 
- - [![Gradle Logo][GradleIMG]][Gradle]
- - [![Processing Logo][ProcessingIMG]][Processing]
- - [![IntelliJ IDEA logo][IntelliJIMG]][Idea]
- - [![ShadowJar on Github][ShadowJarIMG]][ShadowJar]
- - [![Kotlin Logo][KotlinIMG]][Kotlin]
+- [![Gradle Logo][GradleIMG]][Gradle]
+- [![Processing Logo][ProcessingIMG]][Processing]
+- [![IntelliJ IDEA logo][IntelliJIMG]][Idea]
+- [![ShadowJar on Github][ShadowJarIMG]][ShadowJar]
+- [![Kotlin Logo][KotlinIMG]][Kotlin]
 
 ## Getting Started
 ### Installation
@@ -89,10 +88,11 @@ These were some of the tools I used to build this project (except processing, th
 <tr><td align=left>
 
 ```xml
+
 <dependency>
-    <groupId>gay.kanwi</groupId>
-    <artifactId>compxclib</artifactId>
-    <version>v1.0</version>
+  <groupId>dev.kaytea</groupId>
+  <artifactId>compxclib</artifactId>
+  <version>1.0.1</version>
 </dependency>
 ```
 </tr>
@@ -108,7 +108,7 @@ These were some of the tools I used to build this project (except processing, th
 ```gradle
 dependencies {
     //other dependencies...
-    implementation 'gay.kanwi:compxclib:v1.0'
+    implementation 'dev.kaytea:compxclib:1.0.1'
 }
 ```
 
@@ -124,8 +124,8 @@ dependencies {
 
 ```kotlin
 dependencies {
-    //other dependencies...
-    implementation("gay.kanwi:compxclib:v1.0")
+  //other dependencies...
+  implementation("dev.kaytea:compxclib:1.0.1")
 }
 ```
 </tr></table></div>
@@ -141,73 +141,75 @@ dependencies {
     </tr>
     <tr>
         <td align=left>
-            
+
 ```java
 import compxclib.ComplexNumber;
 import compxclib.parser.Parser;
 import java.util.Scanner;
 
 public class App{
-    private static final Scanner scanner = new Scanner(System.in);
-    private static void calculate() {
-        String input = scanner.nextLine();
-        Parser parser = new Parser(input);
-        ComplexNumber result = parser.parse();
-        System.out.println(input +" = "+ result);
-    }
-    public static void main(String[] args) {
-        System.out.println("Introduce an expression");
-        calculate();
-    }
+  private static final Scanner scanner = new Scanner(System.in);
+
+  private static void calculate() {
+    String input = scanner.nextLine();
+    Parser parser = new Parser(input);
+    ComplexNumber result = parser.parse();
+    System.out.println(input +" = "+ result);
+  }
+
+  public static void main(String[] args) {
+    System.out.println("Introduce an expression");
+    calculate();
+  }
 }
 ```
 </table>
-    
+
 <table>
     <tr>
         <td>run multiple operations efficiently</td>
     </tr>
     <tr>
         <td align=left>
-            
+
 ```kotlin
 import compxclib.ComplexNumber
 import compxclib.functions.sin
 
 fun main() {
-    val (width, height) = Pair(1920, 1080)
-    val results = Array(height) { Array(width) { ComplexNumber(0,0) } }
-    for (i in 0 ..< height) {
-        for (j in 0 ..< width){
-            val currentNumber = ComplexNumber(height, width)
-            val sinOfCurrentNumber = sin(currentNumber)
-            results[i][j] = sinOfCurrentNumber
-        }
+  val (width, height) = Pair(1920, 1080)
+  val results = Array(height) { Array(width) { ComplexNumber(0,0) } }
+  for (i in 0 ..< height) {
+    for (j in 0 ..< width){
+      val currentNumber = ComplexNumber(height, width)
+      val sinOfCurrentNumber = sin(currentNumber)
+      results[i][j] = sinOfCurrentNumber
     }
-    println(results)
+  }
+  println(results)
 }
 
 ```
 </table>
 
 </div>   
-    
+
 ## Roadmap
 
 - [X] Adding a fully functioning complex number class
 - [X] Handling typical functions such as `exp(x)` or `log(x)`
 - [ ] Refractor codebase and optimize
 - [ ] Handling extra functions
-    - [X] Trig functions
-    - [ ] Hyperbolic functions
+  - [X] Trig functions
+  - [ ] Hyperbolic functions
 - [ ] Adding a parser
-    - [x] Parser returns values
-    - [ ] Parser returns functions
+  - [x] Parser returns values
+  - [ ] Parser returns functions
 - [ ] Examples inside the documentation
 
 ## Contributing
 
-Contributing is what makes open source projects so magical and it unites the community.
+Contributing is what makes open source projects so magical, and it unites the community.
 if you want to suggest a feature then you could either
 - Create a new issue with the "Suggestion tag"
 - Create a pull request:
@@ -216,8 +218,6 @@ if you want to suggest a feature then you could either
   3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
   4. Push to the Branch (`git push origin feature/AmazingFeature`)
   5. Open a Pull Request
-
-
 
 ## License
 
