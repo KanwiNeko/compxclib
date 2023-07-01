@@ -241,7 +241,7 @@ You can contact me with the name "Katherine"
 [Issues]: https://img.shields.io/github/issues/kanwineko/compxclib?style=for-the-badge
 [License]: https://img.shields.io/github/license/kanwineko/compxclib?style=for-the-badge
 [PullRequests]: https://img.shields.io/github/issues-pr/kanwineko/compxclib?style=for-the-badge
-[MavenCentral](https://img.shields.io/maven-central/v/dev.kaytea/compxclib?style=for-the-badge)
+[MavenCentral]: https://img.shields.io/maven-central/v/dev.kaytea/compxclib?style=for-the-badge
 
 [Contributors-url]: https://github.com/KanwiNeko/compxclib/graphs/contributors
 [Forks-url]: https://github.com/KanwiNeko/compxclib/network/members
