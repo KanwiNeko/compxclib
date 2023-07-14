@@ -1,30 +1,35 @@
 package compxclib
 
-import kotlin.math.*
-import kotlin.test.*
-import compxclib.functions.*
+import compxclib.functions.complexFromPolar
+import compxclib.functions.exp
 import compxclib.operators.div
 import compxclib.operators.minus
 import compxclib.operators.plus
 import compxclib.operators.times
+import kotlin.math.PI
+import kotlin.math.sqrt
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class LibraryTest {
     @Test
     fun testMag() {
-        assertEquals(5.0,
-            ComplexNumber(3, 4).mag(),
-            "the magnitude of the complex number should be 5")
+        assertEquals(
+            5.0,
+            ComplexNumber(3, 4).mag,
+            "the magnitude of the complex number should be 5"
+        )
     }
     @Test
     fun testArg() {
         assertEquals(
             PI,
-            ComplexNumber(-1, 0).arg(),
+            ComplexNumber(-1, 0).arg,
             "The argument of the complex number -1 + 0i should be pi"
         )
         assertEquals(
             0.0,
-            ComplexNumber(1, 0).arg(),
+            ComplexNumber(1, 0).arg,
             "The argument of the complex number 1 + 0i should be 0"
         )
     }
@@ -108,23 +113,25 @@ class LibraryTest {
         )
     }
     @Test
-    fun testExp(){
+    fun testExp() {
         assertEquals(
-            ComplexNumber(-1,0),
+            ComplexNumber(-1, 0),
             exp(ComplexNumber(0, PI))
         )
         assertEquals(
-            ComplexNumber(-1,0),
+            ComplexNumber(-1, 0),
             ComplexNumber(0, 1).pow(2)
         )
     }
-    /*@Test
-    fun testPolar(){
+
+    @Test
+    fun testPolar() {
         assertEquals(
-            CNumber(1,1),
-            complexFromPolar(PI/4, sqrt(2.0))
+            ComplexNumber(1, 1),
+            complexFromPolar(PI / 4, sqrt(2.0)).round(Constants.getDefaultRound())
         )
-    }*/
+    }
+
     @Test
     fun testToGaussianInteger() {
         assertEquals(

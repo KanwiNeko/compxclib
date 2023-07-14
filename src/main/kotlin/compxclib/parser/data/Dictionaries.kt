@@ -12,6 +12,7 @@ object Dictionaries {
     private fun nthrt(input: ComplexNumber): ComplexNumber {
         return nthrt(input, 1)
     }
+
     private fun ln(input: ComplexNumber): ComplexNumber {
         return compxclib.functions.ln(input)
     }
@@ -20,18 +21,41 @@ object Dictionaries {
         return log(input, 10.toComplex())
     }
 
-    private fun arcsin(input: ComplexNumber): ComplexNumber {return compxclib.functions.arcsin(input)}
-    private fun arccos(input: ComplexNumber): ComplexNumber {return compxclib.functions.arccos(input)}
-    private fun arctan(input: ComplexNumber): ComplexNumber {return compxclib.functions.arctan(input)}
-    private fun arccot(input: ComplexNumber): ComplexNumber {return compxclib.functions.arccot(input)}
-    private fun arcsec(input: ComplexNumber): ComplexNumber {return compxclib.functions.arcsec(input)}
-    private fun arccsc(input: ComplexNumber): ComplexNumber {return compxclib.functions.arccsc(input)}
+    private fun arcsin(input: ComplexNumber): ComplexNumber {
+        return compxclib.functions.arcsin(input)
+    }
 
-    private fun mag(input: ComplexNumber): ComplexNumber { return input.mag().toComplex() }
-    private fun arg(input: ComplexNumber): ComplexNumber { return input.arg().toComplex() }
+    private fun arccos(input: ComplexNumber): ComplexNumber {
+        return compxclib.functions.arccos(input)
+    }
+
+    private fun arctan(input: ComplexNumber): ComplexNumber {
+        return compxclib.functions.arctan(input)
+    }
+
+    private fun arccot(input: ComplexNumber): ComplexNumber {
+        return compxclib.functions.arccot(input)
+    }
+
+    private fun arcsec(input: ComplexNumber): ComplexNumber {
+        return compxclib.functions.arcsec(input)
+    }
+
+    private fun arccsc(input: ComplexNumber): ComplexNumber {
+        return compxclib.functions.arccsc(input)
+    }
+
+    private fun mag(input: ComplexNumber): ComplexNumber {
+        return input.mag.toComplex()
+    }
+
+    private fun arg(input: ComplexNumber): ComplexNumber {
+        return input.arg.toComplex()
+    }
 
     /**
      * All the library's valid functions
+     *
      * @since Version 1.0
      */
     val functionAliases = arrayOf(

@@ -20,7 +20,7 @@ val i = Constants.i()
  * @see [ComplexNumber]
  */
 fun mag(of: ComplexNumber): Double {
-	return sqrt(of.re().pow(2) + of.im().pow(2))
+	return sqrt(of.re.pow(2) + of.im.pow(2))
 }
 
 //Argument of the number
@@ -34,7 +34,7 @@ fun mag(of: ComplexNumber): Double {
  * @see [ComplexNumber]
  */
 fun arg(of: ComplexNumber): Double {
-	return atan2(of.im(), of.re())
+    return atan2(of.im, of.re)
 }
 
 // to complex functions, where we define the conversion between reals and complex

@@ -1,17 +1,17 @@
 import org.gradle.jvm.tasks.Jar
-import java.net.URI
 import org.jetbrains.dokka.gradle.DokkaTask
+import java.net.URI
 import java.net.URL
 
 plugins {
-    kotlin("jvm") version "1.8.20"
+    kotlin("jvm") version "1.9.0"
     id("java-library")
     id("maven-publish")
     id("signing")
     id("org.jetbrains.dokka") version "1.8.20"
 }
 
-val versionProject = "1.0.1"
+val versionProject = "1.1"
 val group = "dev.kaytea"
 val jvmTargetCompatibility = 11
 

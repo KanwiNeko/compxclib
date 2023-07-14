@@ -1,6 +1,6 @@
 package compxclib.functions
 
-import compxclib.*
+import compxclib.ComplexNumber
 import compxclib.operators.div
 import compxclib.operators.times
 import kotlin.math.cos
@@ -18,7 +18,7 @@ import kotlin.math.sin
  * @since Version 1.0
  */
 fun exp(of: ComplexNumber): ComplexNumber {
-    return exp(of.re()) * ComplexNumber(cos(of.im()), sin(of.im()))
+    return exp(of.re) * ComplexNumber(cos(of.im), sin(of.im))
 }
 
 /**

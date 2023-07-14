@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
 package compxclib
 
 import compxclib.enums.Parameter
@@ -5,78 +7,85 @@ import compxclib.exceptions.IllegalConversionArgument
 import compxclib.exceptions.InvalidComparison
 import compxclib.functions.*
 import compxclib.operators.times
-import kotlin.jvm.Throws
-import kotlin.math.*
-import kotlin.Any as Any
 import java.math.BigDecimal
 import java.math.RoundingMode
+import kotlin.math.*
 
 /**
  * Main *Complex Number* class.
  *
- *@param[real] Real value of this complex number as a [Number].
- *@param[imaginary] Imaginary value of this complex number as a [Number].
- *@property[re] Real value of the complex number.
- *@property[im] Imaginary value of this complex number.
- *@property[mag] Modulus of this complex number.
- *@property[arg] Argument of this complex number.
- *@constructor Creates a complex number.
- *@since Version 1.0
+ * @param real Real value of this complex number as a [Number].
+ * @param imaginary Imaginary value of this complex number as a [Number].
+ * @constructor Creates a complex number.
+ * @property[re] Real value of the complex number.
+ * @property[im] Imaginary value of this complex number.
+ * @property[mag] Modulus of this complex number.
+ * @property[arg] Argument of this complex number.
+ * @property[mod] Alias of [mag].
+ * @since Version 1.0
  */
-data class ComplexNumber(private val real: Number, private val imaginary: Number){
+data class ComplexNumber(private val real: Number, private val imaginary: Number) {
     // -------------------------------------------------------------
     // Setting main fields of the class
     // -------------------------------------------------------------
     /**
-     * Actual *real* value of the number. Converts
-     * [Number] to [Double]
-     * @since Version 1.0
-     */
-    private val re = real.toDouble()
-    /**
-     * Actual *real* value of the number. Converts
-     * [Number] to [Double]
-     * @since Version 1.0
-     */
-    private val im = imaginary.toDouble()
-    /**
-     * *Modulus* of the complex number
+     * Actual *real* value of the number. Converts [Number] to [Double]
      *
-     * Set to **null** until **[this.mag()]** is called
      * @since Version 1.0
      */
-    private var mag: Double? = null
+    val re = real.toDouble()
+
+    /**
+     * Actual *real* value of the number. Converts [Number] to [Double]
+     *
+     * @since Version 1.0
+     */
+    val im = imaginary.toDouble()
+
+    /**
+     * *Modulus* or *Magnitude* of the complex number
+     *
+     * @since Version 1.0
+     */
+    val mag: Double by lazy { mag(this) }
+
+    /**
+     * *Modulus* or *Magnitude* of the complex number
+     *
+     * alias for the [ComplexNumber.mag] field
+     *
+     * @since Version 1.1
+     */
+    val mod: Double
+        get() = mag
+
     /**
      * *Argument* of the complex number
      *
-     * Set to **null** until **[this.arg()]** is called
      * @since Version 1.0
      */
-    private var arg: Double? = null
+    val arg: Double by lazy { arg(this) }
 
     /**
-     * @return A new complex number that is the conjugate of this [ComplexNumber]
+     * @return A new complex number that is the conjugate of this
+     *     [ComplexNumber]
      * @since Version 1.0
      */
-    @Suppress("MemberVisibilityCanBePrivate")
     fun conjugate(): ComplexNumber {
         return ComplexNumber(re, -1 * im)
     }
+
     /**
      * Converts a [ComplexNumber] to a real [Double]
      *
-     * @throws IllegalConversionArgument when [im] isn't **0**
      * @return Returns a Double containing the real value of a complex number
+     * @throws IllegalConversionArgument when [im] isn't **0**
      * @since Version 1.0
      */
     @Throws(IllegalConversionArgument::class)
     fun toReal(): Double {
-        val other = ComplexNumber(this.re(), 0)
-        return if (this == other) {
-            this.re()
-        } else {
-            throw IllegalConversionArgument("This number has a non zero imaginary part.")
-        }
+        return if (this.imaginary != 0) this.re
+        else throw IllegalConversionArgument("This number has a non zero imaginary part.")
     }
     // -------------------------------------------------------------
     // definition of operators
@@ -337,29 +346,30 @@ data class ComplexNumber(private val real: Number, private val imaginary: Number
         val thisNumber = this.round(roundTo)
         val otherNumber = b.round(roundTo)
 
-        val reals = thisNumber.re() == otherNumber.re()
-        val imaginaries = thisNumber.im() == otherNumber.im()
+        val reals = thisNumber.re == otherNumber.re
+        val imaginaries = thisNumber.im == otherNumber.im
 
         return reals && imaginaries
-
     }
 
     /**
-     * rounds a [ComplexNumber] to [places] decimal places by rounding both the [re] and [im] members
+     * rounds a [ComplexNumber] to [places] decimal places by rounding both the
+     * [re] and [im] members
+     *
      * @param places
      * @return A rounded [ComplexNumber]
-     * @since Version 1.0
      * @see BigDecimal.setScale
+     * @since Version 1.0
      */
-    @SuppressWarnings
-    fun round(places: Int): ComplexNumber{
-        val reRounded = BigDecimal(this.re()).setScale(places, RoundingMode.FLOOR)
-        val imRounded = BigDecimal(this.im()).setScale(places, RoundingMode.FLOOR)
+    fun round(places: Int): ComplexNumber {
+        val reRounded = BigDecimal(this.re).setScale(places, RoundingMode.FLOOR)
+        val imRounded = BigDecimal(this.im).setScale(places, RoundingMode.FLOOR)
         return ComplexNumber(reRounded, imRounded)
     }
 
     /**
      * Rounds both [re] and [im] members of a [ComplexNumber] to an [Int]
+     *
      * @return [ComplexNumber] with [Int] members
      * @since Version 1.0
      */
@@ -368,56 +378,30 @@ data class ComplexNumber(private val real: Number, private val imaginary: Number
     }
 
     /**
-     * Will perform a modular operation between the current complex number and a parameter [parameter]
-     * and will return `true` or `false` if the result of said operation is `true`
+     * Will perform a modular operation between the current complex number and
+     * a parameter [parameter] and will return `true` or `false` depending on
+     * the result of said operation
+     *
      * @param parameter
      * @return A boolean with the result of [parameter] % [ComplexNumber] == 0
-     * @since Version 1.0
      * @see rem
+     * @since Version 1.0
      */
     @Suppress("unused")
     fun divides(parameter: ComplexNumber): Boolean {
         return parameter % this == 0.0.toComplex()
     }
 
-    // -------------------------------------------------------------
-    // Getters
-    // -------------------------------------------------------------
-    /**
-     * Getter method of the [mag] property of a [ComplexNumber]
-     *
-     * if [mag] is a `null` then it will calculate the magnitude of said complex number,
-     * otherwise it will return the already stored value
-     * @return [Double] with the value of the Modulus of a [ComplexNumber]
-     * @since Version 1.0
-     */
-    fun mag(): Double {
-        when(mag) { null -> mag = mag(this) }
-        return mag!!
-    }
-    /**
-     * Getter method of the [arg] property of a [ComplexNumber]
-     *
-     * if [arg] is a `null` then it will calculate the argument of said complex number,
-     * otherwise it will return the already stored value
-     * @return [Double] with the value of the Argument of a [ComplexNumber]
-     * @since Version 1.0
-     */
-    fun arg(): Double {
-        when(arg) { null -> arg = arg(this) }
-        return arg!!
-    }
+    // Deprecated getters
+    @Deprecated("Use property access instead", ReplaceWith("re"))
+    fun re(): Double = this.re
 
-    /**
-     * Getter method for the **Real** component of a [ComplexNumber]
-     * @return [Double] with the real value of a [ComplexNumber]
-     * @since Version 1.0
-     */
-    fun re(): Double { return re }
-    /**
-     * Getter method for the **Imaginary** component of a [ComplexNumber]
-     * @return [Double] with the imaginary value of a [ComplexNumber]
-     * @since Version 1.0
-     */
-    fun im(): Double { return im }
+    @Deprecated("Use property access instead", ReplaceWith("im"))
+    fun im(): Double = this.im
+
+    @Deprecated("Use property access instead", ReplaceWith("mag"))
+    fun mag(): Double = this.mag
+
+    @Deprecated("Use property access instead", ReplaceWith("arg"))
+    fun arg(): Double = this.arg
 }

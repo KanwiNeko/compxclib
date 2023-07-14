@@ -15,7 +15,7 @@ import kotlin.math.ln
  * @see [ComplexNumber]
  */
 operator fun Number.plus(complexNumber: ComplexNumber): ComplexNumber {
-    return ComplexNumber(complexNumber.re() + this.toDouble(), complexNumber.im())
+    return ComplexNumber(complexNumber.re + this.toDouble(), complexNumber.im)
 }
 
 /**
@@ -27,7 +27,7 @@ operator fun Number.plus(complexNumber: ComplexNumber): ComplexNumber {
  * @see [ComplexNumber]
  */
 operator fun Number.minus(complexNumber: ComplexNumber): ComplexNumber {
-    return ComplexNumber(this.toDouble() - complexNumber.re(), -1.0 * complexNumber.im())
+    return ComplexNumber(this.toDouble() - complexNumber.re, -1.0 * complexNumber.im)
 }
 
 /**
@@ -56,11 +56,13 @@ operator fun Number.div(complexNumber: ComplexNumber): ComplexNumber {
 
 /**
  * Extension of the `%` operator to include [ComplexNumber]
- * @param [complexNumber] a [ComplexNumber]
- * @return [ComplexNumber] result of the  modulo between a [Number] and a [ComplexNumber]
- * @since Version 1.0
+ *
+ * @param ComplexNumber a [ComplexNumber]
+ * @return [ComplexNumber] result of the modulo between a [Number] and a
+ *     [ComplexNumber]
  * @see [Number]
  * @see [ComplexNumber]
+ * @since Version 1.0
  */
 operator fun Number.rem(complexNumber: ComplexNumber): ComplexNumber {
     return this.toComplex() % complexNumber

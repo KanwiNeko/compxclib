@@ -1,8 +1,9 @@
 package compxclib.functions
 
-import compxclib.*
+import compxclib.ComplexNumber
 import compxclib.operators.plus
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.ln
 
 // complex logarithms
 /**
@@ -16,7 +17,7 @@ import kotlin.math.*
  * @since Version 1.0
  */
 fun ln(of: ComplexNumber, intBranch: Int = 0): ComplexNumber {
-    return ln(of.mag()) + i * (of.arg() + 2*PI*intBranch)
+    return ln(of.mag) + i * (of.arg + 2 * PI * intBranch)
 }
 
 /**
