@@ -92,7 +92,7 @@ These were some of the tools I used to build this project (except processing, th
 <dependency>
   <groupId>dev.kaytea</groupId>
   <artifactId>compxclib</artifactId>
-  <version>1.0.1</version>
+  <version>1.1</version>
 </dependency>
 ```
 </tr>
@@ -108,7 +108,7 @@ These were some of the tools I used to build this project (except processing, th
 ```gradle
 dependencies {
     //other dependencies...
-    implementation 'dev.kaytea:compxclib:1.0.1'
+    implementation 'dev.kaytea:compxclib:1.1'
 }
 ```
 
@@ -125,7 +125,7 @@ dependencies {
 ```kotlin
 dependencies {
   //other dependencies...
-  implementation("dev.kaytea:compxclib:1.0.1")
+  implementation("dev.kaytea:compxclib:1.1")
 }
 ```
 </tr></table></div>
