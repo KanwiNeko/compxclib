@@ -36,7 +36,7 @@ data class ComplexNumber(private val real: Number, private val imaginary: Number
     val re = real.toDouble()
 
     /**
-     * Actual *real* value of the number. Converts [Number] to [Double]
+     * Actual *imaginary* value of the number. Converts [Number] to [Double]
      *
      * @since Version 1.0
      */
