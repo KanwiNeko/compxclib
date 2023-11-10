@@ -1,10 +1,13 @@
 package compxclib
 
 import compxclib.enums.SqrtBranch
-import kotlin.test.*
-import kotlin.math.cosh
 import compxclib.functions.*
+import compxclib.operators.i
+import compxclib.operators.plus
 import compxclib.operators.times
+import kotlin.math.cosh
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class FunctionTest {
 
@@ -114,6 +117,14 @@ class FunctionTest {
                 0.4522784471511907
             ),
             arccsch(ComplexNumber(-1, -1))
+        )
+    }
+
+    @Test
+    fun iTest() {
+        assertEquals(
+            ComplexNumber(5, 6),
+            5 + 6.i
         )
     }
 }

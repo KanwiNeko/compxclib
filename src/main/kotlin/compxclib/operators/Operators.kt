@@ -80,3 +80,12 @@ operator fun Number.rem(complexNumber: ComplexNumber): ComplexNumber {
 infix fun Number.pow(to: ComplexNumber): ComplexNumber {
     return exp(ln(this.toDouble()) * to)
 }
+
+// Extension for a number
+/**
+ * `i` extension property for numbers that return an imaginary number
+ * @since Version 1.2
+ */
+@Suppress("unused")
+val Number.i: ComplexNumber
+    get() = ComplexNumber(0, this)
