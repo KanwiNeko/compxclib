@@ -7,6 +7,7 @@ package compxclib.exceptions
  * @param [message] message thrown along the [Exception]
  * @see [compxclib.ComplexNumber]
  */
+@Deprecated("This is unused")
 class IllegalConversionArgument(message: String): Exception(message)
 
 /**

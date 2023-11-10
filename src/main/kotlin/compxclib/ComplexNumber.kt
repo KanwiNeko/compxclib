@@ -3,7 +3,6 @@
 package compxclib
 
 import compxclib.enums.Parameter
-import compxclib.exceptions.IllegalConversionArgument
 import compxclib.exceptions.InvalidComparison
 import compxclib.functions.*
 import compxclib.operators.times
@@ -13,7 +12,6 @@ import kotlin.math.*
 
 /**
  * Main *Complex Number* class.
- *
  * @param real Real value of this complex number as a [Number].
  * @param imaginary Imaginary value of this complex number as a [Number].
  * @constructor Creates a complex number.
@@ -79,13 +77,11 @@ data class ComplexNumber(private val real: Number, private val imaginary: Number
      * Converts a [ComplexNumber] to a real [Double]
      *
      * @return Returns a Double containing the real value of a complex number
-     * @throws IllegalConversionArgument when [im] isn't **0**
      * @since Version 1.0
      */
-    @Throws(IllegalConversionArgument::class)
-    fun toReal(): Double {
-        return if (this.imaginary != 0) this.re
-        else throw IllegalConversionArgument("This number has a non zero imaginary part.")
+    fun toReal(): Double? {
+        return if (this.imaginary == 0) this.re
+        else null
     }
     // -------------------------------------------------------------
     // definition of operators
@@ -135,7 +131,7 @@ data class ComplexNumber(private val real: Number, private val imaginary: Number
      * @since Version 1.0
      */
     operator fun div(b: ComplexNumber): ComplexNumber{
-        val wwc = 1/(b * b.conjugate()).toReal()
+        val wwc = 1 / (b * b.conjugate()).re
         val zwc = this * b.conjugate()
         return zwc * wwc
     }

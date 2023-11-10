@@ -127,3 +127,10 @@ tasks.withType<DokkaTask>().configureEach {
         }
     }
 }
+
+tasks.register<Copy>("Documentation") {
+    from(tasks.dokkaHtml)
+    from(layout.buildDirectory.dir("build/dokka/dokkaHtml"))
+    include("**/**")
+    into(layout.buildDirectory.dir("../docs"))
+}
