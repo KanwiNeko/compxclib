@@ -11,7 +11,7 @@ plugins {
     id("org.jetbrains.dokka") version "1.8.20"
 }
 
-val versionProject = "1.1"
+val versionProject = "1.2"
 val group = "dev.kaytea"
 val jvmTargetCompatibility = 11
 
