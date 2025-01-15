@@ -2,7 +2,7 @@
 <div id="top"></div>
 
 <div align=center>
-<img src="https://github.com/KanwiNeko/compxclib/blob/main/assets/Repo%20Icon.png?raw=true" alt="Repository Icon" width="200">
+<img src="https://github.com/KatieUmbra/compxclib/blob/main/assets/Repo%20Icon.png?raw=true" alt="Repository Icon" width="200">
 <h1> <b>CompxCLib</b> </h1>
 Complex Complete Library
 <br/>
@@ -46,9 +46,9 @@ A complete library for all of your <b>complex</b> needs!
 <div align="center">
 
 
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/1.png" alt="Graph of a complex function" width="250">
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/2.png" alt="Graph of a complex function" width="250">
-<img src="https://raw.githubusercontent.com/KanwiNeko/compxclib/main/assets/examples/3.png" alt="Graph of a complex function" width="250">
+<img src="https://raw.githubusercontent.com/KatieUmbra/compxclib/main/assets/examples/1.png" alt="Graph of a complex function" width="250">
+<img src="https://raw.githubusercontent.com/KatieUmbra/compxclib/main/assets/examples/2.png" alt="Graph of a complex function" width="250">
+<img src="https://raw.githubusercontent.com/KatieUmbra/compxclib/main/assets/examples/3.png" alt="Graph of a complex function" width="250">
 
 > these images were generated using [Processing].
 
@@ -235,20 +235,20 @@ You can contact me with the name "Katherine"
 
 <!-- LINKS AND IMAGES -->
 
-[Contributors]: https://img.shields.io/github/contributors/KanwiNeKo/compxclib?color=blue&style=for-the-badge
-[Forks]: https://img.shields.io/github/forks/kanwineko/compxclib?style=for-the-badge
-[Stars]: https://img.shields.io/github/stars/kanwineko/compxclib?style=for-the-badge
-[Issues]: https://img.shields.io/github/issues/kanwineko/compxclib?style=for-the-badge
-[License]: https://img.shields.io/github/license/kanwineko/compxclib?style=for-the-badge
-[PullRequests]: https://img.shields.io/github/issues-pr/kanwineko/compxclib?style=for-the-badge
+[Contributors]: https://img.shields.io/github/contributors/KatieUmbra/compxclib?color=blue&style=for-the-badge
+[Forks]: https://img.shields.io/github/forks/KatieUmbra/compxclib?style=for-the-badge
+[Stars]: https://img.shields.io/github/stars/KatieUmbra/compxclib?style=for-the-badge
+[Issues]: https://img.shields.io/github/issues/KatieUmbra/compxclib?style=for-the-badge
+[License]: https://img.shields.io/github/license/KatieUmbra/compxclib?style=for-the-badge
+[PullRequests]: https://img.shields.io/github/issues-pr/KatieUmbra/compxclib?style=for-the-badge
 [MavenCentral]: https://img.shields.io/maven-central/v/dev.kaytea/compxclib?style=for-the-badge
 
-[Contributors-url]: https://github.com/KanwiNeko/compxclib/graphs/contributors
-[Forks-url]: https://github.com/KanwiNeko/compxclib/network/members
-[Stars-url]: https://github.com/KanwiNeko/compxclib
-[Issues-url]: https://github.com/KanwiNeko/compxclib/issues
+[Contributors-url]: https://github.com/KatieUmbra/compxclib/graphs/contributors
+[Forks-url]: https://github.com/KatieUmbra/compxclib/network/members
+[Stars-url]: https://github.com/KatieUmbra/compxclib
+[Issues-url]: https://github.com/KatieUmbra/compxclib/issues
 [License-url]: https://mit-license.org/
-[PullRequests-url]: https://github.com/KanwiNeko/compxclib/pulls
+[PullRequests-url]: https://github.com/KatieUmbra/compxclib/pulls
 [MavenCentral-url]: https://repo1.maven.org/maven2/dev/kaytea/compxclib/
 
 [README-inspiration]: https://github.com/othneildrew/Best-README-Template
